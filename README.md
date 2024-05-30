@@ -1,6 +1,8 @@
 # Blackjack-Bot
 
 A Decentralized casino experience with a bot powered with AI-based decision making
+(Improvement on my previous personal project where I created a blackjack bot using java)
+
 
 1- Gameplay (React JS frontend and Flask Python backend)
 
@@ -8,4 +10,7 @@ A Decentralized casino experience with a bot powered with AI-based decision maki
 
 3- Simulation of profits for the bot
 
-4- Real Game play with a bot, house and a player
+4- Creation of multiple bots with pretrained model, my own AI program and the strategy from the movie '21'
+
+5- Real Game play with a bot, house and a player
+
