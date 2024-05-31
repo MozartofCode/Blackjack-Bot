@@ -27,5 +27,6 @@ Rules of the Game for this simulation:
 4- Blackjack by a player pays 3:2 like in a normal casino
 5- Doubling and re-splitting after splitting are restricted
 6- Insurance bets are not allowed. (Dealer (house) showing an Ace and taking insurance bets)
+7- House stays at/above 17
 
 
