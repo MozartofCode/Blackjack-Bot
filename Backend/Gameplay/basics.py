@@ -33,8 +33,8 @@ class Player:
 
     def __init__(self, money):
         self.hand = []
-        self.money = money
-    
+        self.money = money #TODO
+
     def new_hand(self):
         self.hand = []
 
@@ -100,31 +100,48 @@ class Player:
 class Game:
 
     def __init__(self):
+        #TODO MONEY,100
         self.deck = Deck()
-        self.house_hand = []
-        self.bot1_hand = []
-        self.bot2_hand = []
-        self.bot3_hand = []
-        self.player_hand = []
+        self.deck.shuffle()
+
+        self.house = Player(100)
+        self.bot1 = Player(100)
+        self.bot2 = Player(100)
+        self.bot3 = Player(100)
+        self.player = Player(100)
 
     def deal_initial_hands(self):
         self.cards_left_check()
 
         # Each player gets 2 cards
         for _ in range(2):
-            self.house_hand.append(self.deck.deal_card())
-            self.bot1_hand.append(self.deck.deal_card())
-            self.bot2_hand.append(self.deck.deal_card())
-            self.bot3_hand.append(self.deck.deal_card())
-            self.player_hand.append(self.deck.deal_card())
-        
+            self.house.hit(self.deck.deal_card())
+            self.bot1.hit(self.deck.deal_card())
+            self.bot2.hit(self.deck.deal_card())
+            self.bot3.hit(self.deck.deal_card())
+            self.player.hit(self.deck.deal_card())
     
     def cards_left_check(self):
         # 20 is a random number since 5 players if each plan to get 5 cards
-        if len(self.deck) <= 25:
+        if len(self.deck.cards) <= 25:
             # Recreate the deck
             self.deck = Deck
+            self.deck.shuffle()
         
-    
+    def deal_single_card(self, player_name):
+        self.cards_left_check()
 
+        if player_name == "house":
+            self.house.hit(self.deck.deal_card())
+        
+        elif player_name == "bot1":
+            self.bot1.hit(self.deck.deal_card())
 
+        elif player_name == "bot2":
+            self.bot2.hit(self.deck.deal_card())
+
+        elif player_name == "bot3":
+            self.bot3.hit(self.deck.deal_card())
+
+        elif player_name == "player":
+            self.player.hit(self.deck.deal_card())
