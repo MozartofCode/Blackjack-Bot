@@ -101,8 +101,10 @@ class Game:
 
     def __init__(self):
         #TODO MONEY,100
+
         self.deck = Deck()
         self.deck.shuffle()
+        self.card_count = 0     # For card counting purposes
 
         self.house = Player(100)
         self.bot1 = Player(100)
@@ -127,6 +129,7 @@ class Game:
             # Recreate the deck
             self.deck = Deck
             self.deck.shuffle()
+            self.count = 0
         
     def deal_single_card(self, player_name):
         self.cards_left_check()
@@ -145,3 +148,19 @@ class Game:
 
         elif player_name == "player":
             self.player.hit(self.deck.deal_card())
+
+    def return_count(self):
+        return self.count
+    
+    # Hi - Lo Card Counting logic
+    # 2-6 is +1
+    # 7-9 is 0
+    # 10-A is -1
+    def count_card(self, card):
+        
+        if card.split(" of ")[0] in ["Jack", "Queen", "King", "Ace"]:
+            return -1
+        elif card.split(" of ")[0] in ["7", "8", "9"]:
+            return 0
+        else:
+            return 1
