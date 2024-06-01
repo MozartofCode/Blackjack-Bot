@@ -17,7 +17,7 @@ https://en.wikipedia.org/wiki/Blackjack
 
 6- Idea: Retrain data or reinforcement learning? with the stats that I get from the bots
 
-
+NOTE: Separate the analysis and fullstack blcokchain part (Payments and Bets)
 
 Rules of the Game for this simulation:
 

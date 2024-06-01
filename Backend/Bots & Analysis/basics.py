@@ -5,6 +5,9 @@
 
 import random
 
+import Bot1
+
+
 # 5 deck of cards (5 x 52 cards)
 
 class Deck:
@@ -95,22 +98,33 @@ class Player:
 
     # If stay then we just stop, no function necessary
 
+    def lose_money(self, loss):
+        self.money -= loss
+    
+    def gain_money(self, gain):
+        self.money += gain
+    
 
 
 class Game:
 
     def __init__(self):
-        #TODO MONEY,100
+
+        # TODO: CHANGE THE MONEY FOR FULL-STACK BLOCKCHAIN APP
+
+        house_money = 10000000
+        player_money = 1000
 
         self.deck = Deck()
         self.deck.shuffle()
         self.card_count = 0     # For card counting purposes
+        self.table_money = 0
 
-        self.house = Player(100)
-        self.bot1 = Player(100)
-        self.bot2 = Player(100)
-        self.bot3 = Player(100)
-        self.player = Player(100)
+        self.house = Player(house_money)
+        self.bot1 = Bot1.Bot1(player_money)
+        self.bot2 = Player(player_money)
+        self.bot3 = Player(player_money)
+        self.player = Player(player_money)
 
     def deal_initial_hands(self):
         self.cards_left_check()
@@ -118,7 +132,7 @@ class Game:
         # Each player gets 2 cards
         for _ in range(2):
             self.house.hit(self.deck.deal_card())
-            self.bot1.hit(self.deck.deal_card())
+            self.bot1.bot.hit(self.deck.deal_card())
             self.bot2.hit(self.deck.deal_card())
             self.bot3.hit(self.deck.deal_card())
             self.player.hit(self.deck.deal_card())
@@ -150,7 +164,7 @@ class Game:
             self.player.hit(self.deck.deal_card())
 
     def return_count(self):
-        return self.count
+        return self.card_count
     
     # Hi - Lo Card Counting logic
     # 2-6 is +1
@@ -164,3 +178,14 @@ class Game:
             return 0
         else:
             return 1
+
+    def make_bet(self, player, amount):
+        player.lose_money(amount)
+    
+
+    def is_bet_possible(self, player, amount):
+        
+        if player.money >= amount:
+            return True
+        
+        return False
