@@ -1,47 +1,43 @@
 # Basic Strategy & Hi-Lo Card Counting
 # Hits if < 17 as a bot if not initial hand
 
-
-
 import math
-import Basic_Strategy
-import basics
+from Basic_Strategy import apply_basic_strategy
 
 # import basics.py
 
 class Bot1:
 
     def __init__(self, money):
-        self.bot = basics.Player(money)
-        
+        self.money = money
+        self.hand = []
+    
+    def init_hand(self):
+        self.hand = []
+
     def play(self, house, player_hand, is_initial):
         
         if is_initial:
-            move = Basic_Strategy.apply_basic_strategy(house, player_hand)
+            move = apply_basic_strategy(house, player_hand)
             return move
         
         else:
-            if self.bot.calculate_hand_val() < 17:
+            if self.calculate_hand_val() < 17:
                 return "H"
             else:
                 return "S"
     
     def bet(self, game):
-        count = self.get_true_count(game)
-        money = self.bot.money
-        return self.betting_strategy(money, count)
-        
+        return self.betting_strategy(self.money, self.get_true_count(game))
 
     # Based on 5 decks
     # True Count = Running Count / Number of Decks Remaining.
     def get_true_count(self, game):
 
-        running_count = game.return_count()
+        running_count = game.card_count
         decks_remaining = math.ceil(len(game.deck.cards)/52)
 
         return running_count//decks_remaining
-
-
 
     # Example Betting Strategy
     # Let’s assume your betting unit (minimum bet) is $10:
@@ -88,3 +84,79 @@ class Bot1:
 
         else:
             return 150
+    
+    def hit(self, card):
+        self.hand.append(card)
+    
+    def stand(self):
+        return
+    
+    def double(self, card):
+        self.hand.append(card)
+    
+    def surrender(self, bet):
+        self.lose_money(bet/2)
+        
+
+    def split(self, card):
+        return
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def calculate_hand_val(self):
+        
+        value = 0
+        aces = 0
+
+        for card in self.hand:
+            val = card.split(" of ")[0]
+
+            if val in ["Jack", "Queen", "King"]:
+                value += 10
+            
+            elif val == "Ace":
+                # Add aces at the end for the proper value calculation
+                aces += 1
+
+            else:
+                value += int(val)
+            
+        while aces != 0:
+            
+            # If adding Ace as 11 makes it > 21 than Ace is 1
+            if value + 11 > 21:
+                    value += 1
+            else:
+                value += 11
+
+            aces -= 1
+
+        return value 
+    
+    def is_over_21(self):
+        if self.calculate_hand_val() > 21:
+            return True
+        return False                
+
+    def lose_money(self, loss):
+        self.money -= loss
+    
+    def gain_money(self, gain):
+        self.money += gain
+    
+

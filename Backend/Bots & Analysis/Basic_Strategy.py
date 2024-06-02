@@ -2,8 +2,6 @@
 # @Author: Bertan Berker
 # This is the algorithm that replicates the Basic Strategy in blackjack
 
-#IMPORT THE BASICS.PY
-
 # @house: player class
 # hand[0] is the faceup card for house
 # @player: player class
