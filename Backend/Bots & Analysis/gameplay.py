@@ -111,10 +111,21 @@ class Game:
 
         elif player_name == "bot3":
             self.bot3.hit(self.deck.deal_card())
+    
+    
+    def deal_single_card_2(self, player_name):
+        
+        self.cards_left_check()
+        self.card_count += self.count_card(self.deck.peek_card())
 
-        elif player_name == "player":
-            self.player.hit(self.deck.deal_card())
+        if player_name == "bot1":
+            self.bot1.hit_2(self.deck.deal_card())
 
+        elif player_name == "bot2":
+            self.bot2.hit_2(self.deck.deal_card())
+
+        elif player_name == "bot3":
+            self.bot3.hit_2(self.deck.deal_card())
 
     # Hi - Lo Card Counting logic
     # 2-6 is +1

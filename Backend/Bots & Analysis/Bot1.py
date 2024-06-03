@@ -2,7 +2,7 @@
 # Hits if < 17 as a bot if not initial hand
 
 import math
-from Basic_Strategy import apply_basic_strategy
+from Basic_Strategy import apply_basic_strategy, apply_basic_strategy_2
 
 # import basics.py
 
@@ -11,6 +11,7 @@ class Bot1:
     def __init__(self, money):
         self.money = money
         self.hand = []
+        self.hand2 = [] # Used for Splitting only
     
     def init_hand(self):
         self.hand = []
@@ -26,6 +27,21 @@ class Bot1:
                 return "H"
             else:
                 return "S"
+
+    
+    def play_2(self, house, player, is_initial):
+        
+        if is_initial:
+            move = apply_basic_strategy_2(house, player)
+            return move
+        
+        else:
+            if self.calculate_hand_val_2() < 17:
+                return "H"
+            else:
+                return "S"
+
+
     
     def bet(self, game):
         return self.betting_strategy(self.money, self.get_true_count(game))
@@ -88,34 +104,19 @@ class Bot1:
     def hit(self, card):
         self.hand.append(card)
  
+    def hit_2(self, card):
+        self.hand2.append(card)
+
     def stand(self):
         return
     
-    # Double is implemented using hit in gameplay
+    # Double is implemented using hit in game
 
     def surrender(self, bet):
         self.lose_money(bet//2)
         
 
-    def split(self, card):
-        return
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    # Split is implemented using a combination of hit and gameplay file in game
 
     def calculate_hand_val(self):
         
@@ -123,6 +124,38 @@ class Bot1:
         aces = 0
         
         for card in self.hand:
+            val = card.split(" of ")[0]
+
+            if val in ["Jack", "Queen", "King"]:
+                value += 10
+            
+            elif val == "Ace":
+                # Add aces at the end for the proper value calculation
+                aces += 1
+
+            else:
+                value += int(val)
+            
+        while aces != 0:
+            
+            # If adding Ace as 11 makes it > 21 than Ace is 1
+            if value + 11 > 21:
+                    value += 1
+            else:
+                value += 11
+
+            aces -= 1
+
+        return value 
+    
+
+    # For second hand if splitted
+    def calculate_hand_val_2(self):
+        
+        value = 0
+        aces = 0
+        
+        for card in self.hand2:
             val = card.split(" of ")[0]
 
             if val in ["Jack", "Queen", "King"]:
