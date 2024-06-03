@@ -55,7 +55,7 @@ class Bot1:
 
         return running_count//decks_remaining
 
-    # Example Betting Strategy
+    # Example Betting Strategy based on Hi-Lo Card Counting
     # Let’s assume your betting unit (minimum bet) is $10:
 
     # True Count ≤ +1: Bet $10.
@@ -77,29 +77,29 @@ class Bot1:
         elif count == 2:
             return 20
 
-        elif money < 30:
+        elif money < 50:
             return money
 
         elif count == 3:
-            return 30
+            return 50
 
-        elif money < 60:
+        elif money < 100:
             return money
 
         elif count == 4:
-            return 60
+            return 100
         
-        elif money < 80:
+        elif money < 300:
             return money
 
         elif count == 5:
-            return 80
+            return 300
         
-        elif money < 150:
+        elif money < 500:
             return money
 
         else:
-            return 150
+            return 500
     
     def hit(self, card):
         self.hand.append(card)

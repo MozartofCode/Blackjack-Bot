@@ -75,7 +75,7 @@ class Game:
             # Recreate the deck
             self.deck = Deck()
             self.deck.shuffle()
-            self.count = 0
+            self.card_count = 0
         
 
     def deal_initial_hands(self):
