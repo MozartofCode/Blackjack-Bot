@@ -12,7 +12,7 @@ def apply_basic_strategy(house, player):
     value = player.calculate_hand_val()
     player_hand = []
     player_hand.append(player.hand[0].split(" of ")[0])
-    player_hand.append(player.hand[0].split(" of ")[0])
+    player_hand.append(player.hand[1].split(" of ")[0])
     house_faceup = house.hand[0].split(" of ")[0]
 
     if house_faceup == "2":

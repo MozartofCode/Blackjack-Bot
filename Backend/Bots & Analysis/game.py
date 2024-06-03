@@ -58,21 +58,28 @@ def main():
     print_initial_cards(house, bot1, bot2, bot3)
 
     print()
-    print("Bot1 playing...")
+    print("Bot1 played...")
 
     move = bot1.play(house, bot1, True)
     bot1_playing = True
 
-    if move == "H":
+    #move = "SU"
+
+    if bot1.is_21():
+        bot1_playing = False
+        bot1.gain_money(3 * bet / 2)
+        house.lose_money(3 * bet / 2)
+
+    elif move == "H":
         
         game.deal_single_card("bot1")
 
         while not bot1.is_over_21() and bot1.play(house, bot1, False) == "H":
-           
             game.deal_single_card("bot1")
 
         if bot1.is_over_21():
             bot1.lose_money(bet)
+            house.gain_money(bet)
             bot1_playing = False
 
     elif move == "S":
@@ -89,12 +96,16 @@ def main():
             bet += bet
     #TODO   
     elif move == "D":
+
         if bot1.money >= bet:
-            bot1.double(game.deal_single_card("bot1"))
+            game.deal_single_card("bot1")
             bet += bet
+
+            print("Done")
 
             if bot1.is_over_21():
                 bot1.lose_money(bet)
+                house.gain_money(bet)
                 bot1_playing = False
         else:
             bot1.hit(game.deal_single_card("bot1"))
@@ -107,6 +118,7 @@ def main():
                 bot1_playing = False
 
     
+    print(str(bot1.hand))
         
         
 
@@ -121,22 +133,27 @@ def main():
     # #TODO: BOT3 play
     # print()
 
-    print("House playing...")
+    print("House played...")
     
     if bot1_playing:
-        while house.calculate_hand_val() < 17:
+
+        while house.calculate_hand_val() < 17 and bot1.calculate_hand_val() > house.calculate_hand_val():
             game.deal_single_card("house")
         
         if house.calculate_hand_val() > 21 or bot1.calculate_hand_val() > house.calculate_hand_val():
             bot1.gain_money(bet)
             house.lose_money(bet)
         
-        else:
+        elif house.calculate_hand_val() > bot1.calculate_hand_val():
             bot1.lose_money(bet)
             house.gain_money(bet)
         
 
-        
+    
+    print(str(house.hand))
+
+    print()
+    print_player_money(house, bot1, bot2, bot3)        
 
     
 

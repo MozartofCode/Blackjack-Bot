@@ -88,13 +88,11 @@ class Bot1:
     def hit(self, card):
         self.hand.append(card)
  
-    
     def stand(self):
         return
     
-    def double(self, card):
-        self.hand.append(card)
-    
+    # Double is implemented using hit in gameplay
+
     def surrender(self, bet):
         self.lose_money(bet/2)
         
@@ -123,7 +121,7 @@ class Bot1:
         
         value = 0
         aces = 0
-        print(str(self.hand))
+        
         for card in self.hand:
             val = card.split(" of ")[0]
 
