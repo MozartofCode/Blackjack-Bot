@@ -94,7 +94,7 @@ class Bot1:
     # Double is implemented using hit in gameplay
 
     def surrender(self, bet):
-        self.lose_money(bet/2)
+        self.lose_money(bet//2)
         
 
     def split(self, card):

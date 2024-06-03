@@ -63,8 +63,6 @@ def main():
     move = bot1.play(house, bot1, True)
     bot1_playing = True
 
-    #move = "SU"
-
     if bot1.is_21():
         bot1_playing = False
         bot1.gain_money(3 * bet / 2)
@@ -87,6 +85,7 @@ def main():
             
     elif move == "SU":
         bot1.surrender(bet)
+        house.gain_money(bet//2)
         bot1_playing = False
             
     #TODO
