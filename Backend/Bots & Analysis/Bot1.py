@@ -15,10 +15,10 @@ class Bot1:
     def init_hand(self):
         self.hand = []
 
-    def play(self, house, player_hand, is_initial):
+    def play(self, house, player, is_initial):
         
         if is_initial:
-            move = apply_basic_strategy(house, player_hand)
+            move = apply_basic_strategy(house, player)
             return move
         
         else:
@@ -87,6 +87,7 @@ class Bot1:
     
     def hit(self, card):
         self.hand.append(card)
+ 
     
     def stand(self):
         return
@@ -122,7 +123,7 @@ class Bot1:
         
         value = 0
         aces = 0
-
+        print(str(self.hand))
         for card in self.hand:
             val = card.split(" of ")[0]
 
@@ -152,6 +153,9 @@ class Bot1:
         if self.calculate_hand_val() > 21:
             return True
         return False                
+
+    def is_21(self):
+        return self.calculate_hand_val() == 21
 
     def lose_money(self, loss):
         self.money -= loss

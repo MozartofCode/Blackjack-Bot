@@ -60,16 +60,16 @@ def main():
     print()
     print("Bot1 playing...")
 
-    move = bot1.play(house.hand, bot1.bot.hand, True)
+    move = bot1.play(house, bot1, True)
     bot1_playing = True
-
 
     if move == "H":
         
-        bot1.hit(game.deal_single_card("bot1"))
+        game.deal_single_card("bot1")
 
-        while not bot1.is_over_21() and bot1.play(house.hand, bot1.bot.hand, False) == "H":
-            bot1.hit(game.deal_single_card("bot1"))
+        while not bot1.is_over_21() and bot1.play(house, bot1, False) == "H":
+           
+            game.deal_single_card("bot1")
 
         if bot1.is_over_21():
             bot1.lose_money(bet)
@@ -99,7 +99,7 @@ def main():
         else:
             bot1.hit(game.deal_single_card("bot1"))
 
-            while not bot1.is_over_21() and bot1.play(house.hand, bot1.bot.hand, False) == "H":
+            while not bot1.is_over_21() and bot1.play(house, bot1, False) == "H":
                 bot1.hit(game.deal_single_card("bot1"))
 
             if bot1.is_over_21():
@@ -125,9 +125,9 @@ def main():
     
     if bot1_playing:
         while house.calculate_hand_val() < 17:
-            house.hit(game.deal_single_card("house"))
+            game.deal_single_card("house")
         
-        if house.calculate_hand_val > 21 or bot1.calculate_hand_val() > house.calculate_hand_val():
+        if house.calculate_hand_val() > 21 or bot1.calculate_hand_val() > house.calculate_hand_val():
             bot1.gain_money(bet)
             house.lose_money(bet)
         
