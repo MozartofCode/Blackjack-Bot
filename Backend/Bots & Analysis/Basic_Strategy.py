@@ -15,6 +15,19 @@ def apply_basic_strategy(house, player):
     player_hand.append(player.hand[1].split(" of ")[0])
     house_faceup = house.hand[0].split(" of ")[0]
 
+    # Fixing/Adjusting the Syntax of Ace
+    if house_faceup == "Ace":
+        house_faceup = "A"
+
+    if player_hand[0] == "Ace":
+        player_hand[0] = "A"
+    
+    if player_hand[1] == "Ace":
+        player_hand[1] = "A"
+    
+
+
+
     if house_faceup == "2":
         
         # PAIRS
@@ -675,7 +688,7 @@ def apply_basic_strategy(house, player):
             return "S"
 
     
-    elif house_faceup == "10":
+    elif house_faceup in ["10", "Jack", "Queen", "King"]:
         
         # PAIRS
         if (player_hand[0] == "2" and player_hand[1] == "2") or  (player_hand[0] == "3" and player_hand[1] == "3"):
@@ -1516,7 +1529,7 @@ def apply_basic_strategy_2(house, player):
             return "S"
 
     
-    elif house_faceup == "10":
+    elif house_faceup in ["10", "Jack", "Queen", "King"]:
         
         # PAIRS
         if (player_hand[0] == "2" and player_hand[1] == "2") or  (player_hand[0] == "3" and player_hand[1] == "3"):

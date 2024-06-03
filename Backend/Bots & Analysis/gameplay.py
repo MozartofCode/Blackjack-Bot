@@ -44,7 +44,7 @@ class Game:
     def __init__(self):
 
         house_money = 10000000
-        player_money = 1000
+        player_money = 10000
 
         self.deck = Deck()
         self.deck.shuffle()
@@ -57,28 +57,23 @@ class Game:
         self.bot3 = Bot3(player_money)
 
 
-    # return True if player1 winner
-    # return False if player2 winner
-    def decide_winner(player1, player2):
-        
-        if player1.calculate_hand_val() > 21:
-            return False
-        
-        elif player2.calculate_hand_val() > 21:
-            return True
-        
-        elif player1 < player2:
-            return False
-        
-        else:
-            return True
+    def clear_hands(self):
+        self.table_money = 0
+        self.house.hand = []
+        self.bot1.hand = []
+        self.bot1.hand2 = []
+        self.bot2.hand = []
+        self.bot2.hand2 = []
+        self.bot3.hand = []
+        self.bot3.hand2 = []
+
 
 
     def cards_left_check(self):
         # 20 is a random number since 5 players if each plan to get 5 cards
         if len(self.deck.cards) <= 25:
             # Recreate the deck
-            self.deck = Deck
+            self.deck = Deck()
             self.deck.shuffle()
             self.count = 0
         
