@@ -1,7 +1,15 @@
-# This is a basic command line version of the frontend for further analysis of the performance of the bots
+# @Author: Bertan Berker
+# @File: game.py
+# This is a basic command line version of the game of blackjack where bots are playing against each other
+# And this program aims to compare their performances
 
 from gameplay import Game
 
+# This function prints how much money each player has
+# :param house: the house
+# :param bot1: bot1 player
+# :param bot2: bot2 player
+# :param bot3: bot3 player
 def print_player_money(house, bot1, bot2, bot3):
     print("Each players money:")
     print("House: " + str(house.money))
@@ -10,12 +18,23 @@ def print_player_money(house, bot1, bot2, bot3):
     print("Bot3: " + str(bot3.money))
     
 
+# This function prints each player's hands
+# :param house: the house
+# :param bot1: bot1 player
+# :param bot2: bot2 player
+# :param bot3: bot3 player
 def print_player_cards(house, bot1, bot2, bot3):
     print("House: " + str(house.hand))
     print("Bot1: " + str(bot1.hand))
     print("Bot2: " + str(bot2.hand))
     print("Bot3: " + str(bot3.hand))
 
+
+# This function specificially prints each player's initial hands (only one card is shown for house)
+# :param house: the house
+# :param bot1: bot1 player
+# :param bot2: bot2 player
+# :param bot3: bot3 player
 def print_initial_cards(house, bot1, bot2, bot3):
     print("House: " + str(house.hand[0]))
     print("Bot1: " + str(bot1.hand))
@@ -23,17 +42,18 @@ def print_initial_cards(house, bot1, bot2, bot3):
     print("Bot3: " + str(bot3.hand))
 
 
-
+# This function calculates the percentage of loss or profit for a player 
+# After the simulation is over
+# :param init_money: Initial amount of money I player had
+# :param final_money: Final amount of money I player has
+# :return: the percentage of loss or profit
 def calculate_profit_loss_percentage(init_money, final_money):
     return round(((final_money - init_money)/init_money) * 100, 2)
 
 
-
-
+# This is the main function that runs the simulation (game)
+# Simulation and the Analysis is going to be based on 1000 played hands
 def main():
-
-    # Analysis is going to be based on 100 played hands
-
     game_count = 1000
     
     game = Game()
@@ -62,9 +82,6 @@ def main():
             print("Game Over for House...")
             break
         
-
-
-
         print("Let's play a new hand...")
         print()
 
@@ -212,9 +229,6 @@ def main():
             print(str(bot1.hand))
             print(str(bot1.hand2))
 
-            
-
-
         print()
 
         # print("Bot2 playing....")
@@ -288,9 +302,6 @@ def main():
             else:
                 print("Total profit of Bot1: " + str(calculate_profit_loss_percentage(10000, bot1.money)) + "%")
 
-        
-
-
-
+    
 if __name__ == "__main__":
     main()
