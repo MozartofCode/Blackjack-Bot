@@ -28,5 +28,6 @@ Rules of the Game for this simulation:
 5- Doubling and re-splitting after splitting are restricted
 6- Insurance bets are not allowed. (Dealer (house) showing an Ace and taking insurance bets)
 7- House stays at/above 17
+8- Minimum bet is $10 for the game
 
 
