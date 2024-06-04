@@ -23,6 +23,13 @@ def print_initial_cards(house, bot1, bot2, bot3):
     print("Bot3: " + str(bot3.hand))
 
 
+
+def calculate_profit_loss_percentage(init_money, final_money):
+    return round(((final_money - init_money)/init_money) * 100, 2)
+
+
+
+
 def main():
 
     # Analysis is going to be based on 100 played hands
@@ -270,7 +277,17 @@ def main():
         print()     
 
         if game_count == 0:
+            print("Simulation finished after playing 1000 hands..." )
+            print()
             print_player_money(house, bot1, bot2, bot3)    
+            print()
+
+            if bot1.money < 10000:
+                print("Total loss of Bot1: " + str(calculate_profit_loss_percentage(10000, bot1.money)) + "%")
+
+            else:
+                print("Total profit of Bot1: " + str(calculate_profit_loss_percentage(10000, bot1.money)) + "%")
+
         
 
 

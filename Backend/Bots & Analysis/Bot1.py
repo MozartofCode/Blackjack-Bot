@@ -1,10 +1,10 @@
-# Basic Strategy & Hi-Lo Card Counting
-# Hits if < 17 as a bot if not initial hand
+# @Author: Bertan Berker
+# @File: Bot1.py
+# Bot1 implements Basic Strategy for playing & Hi-Lo Card Counting for betting strategy
 
 import math
 from Basic_Strategy import apply_basic_strategy, apply_basic_strategy_2
 
-# import basics.py
 
 class Bot1:
 
@@ -21,7 +21,8 @@ class Bot1:
         if is_initial:
             move = apply_basic_strategy(house, player)
             return move
-        
+                
+        # Hits if < 17 as a bot if not initial hand
         else:
             if self.calculate_hand_val() < 17:
                 return "H"
@@ -89,17 +90,17 @@ class Bot1:
         elif count == 4:
             return 100
         
-        elif money < 300:
+        elif money < 200:
             return money
 
         elif count == 5:
-            return 300
+            return 200
         
-        elif money < 500:
+        elif money < 300:
             return money
 
         else:
-            return 500
+            return 300
     
     def hit(self, card):
         self.hand.append(card)
@@ -193,5 +194,3 @@ class Bot1:
     
     def gain_money(self, gain):
         self.money += gain
-    
-

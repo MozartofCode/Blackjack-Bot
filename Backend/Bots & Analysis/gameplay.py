@@ -9,10 +9,10 @@ from Bot1 import Bot1
 from Bot2 import Bot2
 from Bot3 import Bot3
 
-# 5 deck of cards (5 x 52 cards)
 
 class Deck:
 
+    # Initializing 5 decks of cards (5 x 52 cards)
     def __init__(self):
         self.cards = []
         suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
@@ -23,16 +23,25 @@ class Deck:
                 for rank in ranks:
                     self.cards.append(rank + ' of ' + suit)
 
+
+    # Shuffling the deck of cards
     def shuffle(self):
         random.shuffle(self.cards)
     
+
+    # Dealing one card from the deck
+    # :return: the card or None if not possible
     def deal_card(self):
         if len(self.cards) > 0:
             return self.cards.pop()
         else:
             return None
     
-    def peek_card(self):        # Only for card counting algorithm
+
+    # Peeks but doesn't pops the card on top of deck
+    # Used only with the card counting algorithm
+    # :return: the card or None if not possible
+    def peek_card(self): 
         
         if len(self.cards) > 0:
             return self.cards[-1]
@@ -41,8 +50,8 @@ class Deck:
 
 class Game:
 
+    # Initializes the players, money and deck for the game
     def __init__(self):
-
         house_money = 10000000
         player_money = 10000
 
@@ -57,6 +66,7 @@ class Game:
         self.bot3 = Bot3(player_money)
 
 
+    # Clears players hands (used at the start of each play)
     def clear_hands(self):
         self.table_money = 0
         self.house.hand = []
@@ -68,21 +78,20 @@ class Game:
         self.bot3.hand2 = []
 
 
-
+    # Checks if enough cards are left in the deck and shuffles if not
+    # 20 minimum is a random number since 5 players if each plan to get 5 cards
     def cards_left_check(self):
-        # 20 is a random number since 5 players if each plan to get 5 cards
         if len(self.deck.cards) <= 25:
-            # Recreate the deck
             self.deck = Deck()
             self.deck.shuffle()
             self.card_count = 0
         
 
+    # Deals the initial hands to players
+    # Each players gets 2 cards
     def deal_initial_hands(self):
-
         self.cards_left_check()
 
-        # Each player gets 2 cards
         for _ in range(2):
             self.house.hit(self.deck.deal_card())
             self.bot1.hit(self.deck.deal_card())
@@ -90,8 +99,9 @@ class Game:
             self.bot3.hit(self.deck.deal_card())
     
 
+    # Deals a single card to a specific player (Hit)
+    # :param player_name: name of the player to give the card to
     def deal_single_card(self, player_name):
-        
         self.cards_left_check()
         self.card_count += self.count_card(self.deck.peek_card())
 
@@ -108,8 +118,9 @@ class Game:
             self.bot3.hit(self.deck.deal_card())
     
     
+    # Same as the deal single card for the second hand when a player splits
+    # :param player_name: name of the player to give the card to
     def deal_single_card_2(self, player_name):
-        
         self.cards_left_check()
         self.card_count += self.count_card(self.deck.peek_card())
 
@@ -122,10 +133,13 @@ class Game:
         elif player_name == "bot3":
             self.bot3.hit_2(self.deck.deal_card())
 
+
     # Hi - Lo Card Counting logic
     # 2-6 is +1
     # 7-9 is 0
     # 10-A is -1
+    # :param card: the card that was dealt
+    # :return: card count 
     def count_card(self, card):
         
         if card.split(" of ")[0] in ["Jack", "Queen", "King", "Ace"]:
