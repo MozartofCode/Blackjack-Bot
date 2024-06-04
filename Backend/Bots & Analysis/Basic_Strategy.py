@@ -2,11 +2,11 @@
 # @Author: Bertan Berker
 # This is the algorithm that replicates the Basic Strategy in blackjack
 
-# @house: player class
-# hand[0] is the faceup card for house
-# @player: player class
-# :return: S (stand), H (hit), SP (split), Double (D), SU (surrender)
 
+# Basic strategy replicate that return the best possible move for a player
+# :param house: the house, hand[0] is the faceup card for house
+# :param player: player class
+# :return: S (stand), H (hit), SP (split), Double (D), SU (surrender)
 def apply_basic_strategy(house, player):
     
     value = player.calculate_hand_val()
@@ -25,8 +25,6 @@ def apply_basic_strategy(house, player):
     if player_hand[1] == "Ace":
         player_hand[1] = "A"
     
-
-
 
     if house_faceup == "2":
         
@@ -854,13 +852,11 @@ def apply_basic_strategy(house, player):
             return "S"
 
 
-
-
-
-
-
-
-
+# Basic strategy replicate that return the best possible move for a player's
+# Second hand after they split
+# :param house: the house, hand[0] is the faceup card for house
+# :param player: player class
+# :return: S (stand), H (hit), SP (split), Double (D), SU (surrender)
 def apply_basic_strategy_2(house, player):
     
     value = player.calculate_hand_val_2()
@@ -868,6 +864,18 @@ def apply_basic_strategy_2(house, player):
     player_hand.append(player.hand2[0].split(" of ")[0])
     player_hand.append(player.hand2[1].split(" of ")[0])
     house_faceup = house.hand[0].split(" of ")[0]
+
+    
+    # Fixing/Adjusting the Syntax of Ace
+    if house_faceup == "Ace":
+        house_faceup = "A"
+
+    if player_hand[0] == "Ace":
+        player_hand[0] = "A"
+    
+    if player_hand[1] == "Ace":
+        player_hand[1] = "A"
+        
 
     if house_faceup == "2":
         
