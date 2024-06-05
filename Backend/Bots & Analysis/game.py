@@ -119,7 +119,9 @@ def main():
         print("Bot1: $" + str(bet))
 
         print()
-        print("Bot2 betting...")
+        print("Bot2 betting...")        
+        bot2_bet = bot2.bet(game)
+        print("Bot2: $" + str(bet))
 
         print()
         print("Bot3 betting...")
@@ -257,11 +259,128 @@ def main():
             print(str(bot1.hand))
             print(str(bot1.hand2))
 
-        print()
 
-        # print("Bot2 playing....")
-        # #TODO: BOT2 play
-        # print()
+        print()
+        print("Bot2 played...")
+
+        bot2_move = bot2.play(bot2.hand, house.hand[0], game.card_count, bot2_bet, True)
+        bot2_playing = True
+        
+        # For split functionality
+        bot2_playing_1 = True
+        bot2_playing_2 = True
+
+        if bot2.is_21():
+            print("Blackjack!")
+            bot2_playing = False
+            bot2.gain_money(3 * bet // 2)
+            house.lose_money(3 * bet // 2)
+
+        elif bot2_move == "H":
+            
+            game.deal_single_card("bot2")
+
+            while not bot2.is_over_21() and bot2.play(bot2.hand, house.hand[0], game.card_count, bot2_bet, False) == "H":
+                game.deal_single_card("bot2")
+
+            if bot2.is_over_21():
+                bot2.lose_money(bet)
+                house.gain_money(bet)
+                bot2_playing = False
+
+        elif bot2_move == "S":
+            bot2.stand()    
+                
+        elif bot2_move == "SU":
+            bot2.surrender(bet)
+            house.gain_money(bet//2)
+            bot2_playing = False
+                
+
+        elif bot2_move == "SP":
+            if bot2.money >= bet:
+                
+                # Two separate hands
+                bot2.hand2.append(bot2.hand[-1])
+                bot2.hand.pop()
+
+                # For Hand1:
+                game.deal_single_card("bot2")
+                
+                        
+                if bot2.is_21():
+                    
+                    print("Blackjack!")
+                    bot1_playing_2 = False
+                    bot2.gain_money(3 * bet // 2)
+                    house.lose_money(3 * bet // 2)
+
+                else:
+
+                    while not bot2.is_over_21() and bot2.play(bot2.hand, house.hand[0], game.card_count, bot2_bet, False) == "H":
+                        game.deal_single_card("bot2")
+
+                    if bot2.is_over_21():
+                        bot2.lose_money(bet)
+                        house.gain_money(bet)
+                        bot2_playing_1 = False
+
+                # For Hand2:
+                game.deal_single_card_2("bot2")
+                
+                if bot2.calculate_hand_val_2() == 21:
+                    
+                    print("Blackjack!")
+                    bot2_playing_2 = False
+                    bot2.gain_money(3 * bet // 2)
+                    house.lose_money(3 * bet // 2)
+                
+                else:
+                    
+                    while bot2.calculate_hand_val_2() < 21 and bot2.play_2(bot2.hand2, house.hand[0], game.card_count, bot2_bet, False) == "H":
+                        game.deal_single_card_2("bot2")
+
+                    if bot2.calculate_hand_val_2() > 21:
+                        bot2.lose_money(bet)
+                        house.gain_money(bet)
+                        bot2_playing_2 = False
+
+
+        elif bot2_move == "D":
+
+            if bot2.money >= bet:
+                game.deal_single_card("bot2")
+                bet += bet
+
+                if bot2.is_over_21():
+                    bot2.lose_money(bet)
+                    house.gain_money(bet)
+                    bot2_playing = False
+            else:
+                bot2.hit(game.deal_single_card("bot2"))
+
+                while not bot2.is_over_21() and bot2.play(bot2.hand, house.hand[0], game.card_count, bot2_bet, False) == "H":
+                    bot1.hit(game.deal_single_card("bot2"))
+
+                if bot2.is_over_21():
+                    bot2.lose_money(bet)
+                    bot2_playing = False
+
+        
+        if move != "SP":
+            print(str(bot2.hand))
+
+        else:
+
+            if not bot2_playing_1 and not bot2_playing_2:
+                bot2_playing = False
+
+            print(str(bot2.hand))
+            print(str(bot2.hand2))
+
+
+
+  
 
         # print("Bot3 playing....")
         # #TODO: BOT3 play
