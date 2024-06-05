@@ -4,6 +4,29 @@
 # And this program aims to compare their performances
 
 from gameplay import Game
+import csv
+
+# This function is used for generating data for the csv that will be used by bot2 (NN)
+# :param data_row: one row of data to be added to the csv file 
+# [player_hand, dealer_hand, count, move, bet]
+def generate_csv_dataset(data_row):
+    filename = "blackjack_dataset.csv"
+
+    with open(filename, 'a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(data_row)
+
+
+# This function creates the csv file that I'll populate later
+# Adds the headers to the file
+def create_csv_dataset():
+    filename = 'blackjack_dataset.csv'
+    headers = ['Player Hand', 'House Upcard', 'Count', 'Move', 'Bet']
+
+    with open(filename, 'w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(headers)
+
 
 # This function prints how much money each player has
 # :param house: the house
@@ -55,8 +78,9 @@ def calculate_profit_loss_percentage(init_money, final_money):
 # Simulation and the Analysis is going to be based on 1000 played hands
 def main():
     game_count = 1000
-    
     game = Game()
+    
+    #create_csv_dataset()
     
     print("Welcome to Casino Royale...")
     print("Let's play some blackjack!")
@@ -116,6 +140,10 @@ def main():
         # For split functionality
         bot1_playing_1 = True
         bot1_playing_2 = True
+
+        # Adding the play to the csv file
+        # data_row = [list(bot1.hand), house.hand[0], game.card_count, move, bet]
+        # generate_csv_dataset(data_row)
 
         if bot1.is_21():
             print("Blackjack!")
