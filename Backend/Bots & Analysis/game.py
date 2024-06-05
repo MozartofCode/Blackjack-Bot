@@ -77,7 +77,7 @@ def calculate_profit_loss_percentage(init_money, final_money):
 # This is the main function that runs the simulation (game)
 # Simulation and the Analysis is going to be based on 1000 played hands
 def main():
-    game_count = 1000
+    game_count = 10
     game = Game()
     
     #create_csv_dataset()
@@ -266,6 +266,8 @@ def main():
         bot2_move = bot2.play(bot2.hand, house.hand[0], game.card_count, bot2_bet, True)
         bot2_playing = True
         
+        print(bot2_move)
+
         # For split functionality
         bot2_playing_1 = True
         bot2_playing_2 = True

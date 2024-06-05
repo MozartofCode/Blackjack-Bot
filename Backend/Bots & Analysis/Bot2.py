@@ -5,19 +5,22 @@
 
 from NN import predict_move, create_NN_model
 import math
-
+import pandas as pd
+import tensorflow as tf
 
 class Bot2:
     def __init__(self, money):
         self.money = money
         self.hand = []
         self.hand2 = []
-        self.model = create_NN_model()
+        self.model = tf.keras.models.load_model('blackjack_model_bot2.h5')
+        self.df = pd.read_csv('blackjack_dataset.csv')
+
 
 
     def play(self, player_hand, house_upcard, count, bet, is_initial):
         if is_initial:
-            move = predict_move(player_hand, house_upcard, count, bet, self.model)
+            move = predict_move(player_hand, house_upcard, count, bet, self.model, self.df)
             return move
                 
         # Hits if < 17 as a bot if not initial hand
@@ -27,11 +30,11 @@ class Bot2:
             else:
                 return "S"
 
-    #TODO
+
     def play_2(self, player_hand, house_upcard, count, bet, is_initial):
         
         if is_initial:
-            move = predict_move(player_hand, house_upcard, count, bet, self.model)
+            move = predict_move(player_hand, house_upcard, count, bet, self.model, self.df)
             return move
                 
         # Hits if < 17 as a bot if not initial hand

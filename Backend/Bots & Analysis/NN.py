@@ -91,11 +91,12 @@ def create_NN_model():
     X_train, X_test, y_move_train, y_move_test = train_test_split(X, y_move, test_size=0.2, random_state=42)
     model.fit(X_train, y_move_train, epochs=50, validation_split=0.2)
 
-    return model
+    model_path = "./blackjack_model_bot2.h5"
+    model.save(model_path)
 
 
 # Function to make a prediction based on new input data
-def predict_move(player_hand, house_upcard, count, bet, model):
+def predict_move(player_hand, house_upcard, count, bet, model, df):
     input_data = preprocess_input(player_hand, house_upcard, count, bet)
     move_prediction = model.predict(input_data)
     move_index = np.argmax(move_prediction)
@@ -105,3 +106,7 @@ def predict_move(player_hand, house_upcard, count, bet, model):
     predicted_move = move_label_mapping[move_index]
     
     return predicted_move
+
+
+# Used this initially for creating the model
+#create_NN_model()
