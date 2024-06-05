@@ -8,6 +8,7 @@ from House import House
 from Bot1 import Bot1
 from Bot2 import Bot2
 from Bot3 import Bot3
+from Player import Player
 
 
 class Deck:
@@ -61,15 +62,18 @@ class Game:
         self.table_money = 0
 
         self.house = House(house_money)
+        self.player = Player(player_money)
         self.bot1 = Bot1(player_money)
         self.bot2 = Bot2(player_money)
         self.bot3 = Bot3(player_money)
-
+        
 
     # Clears players hands (used at the start of each play)
     def clear_hands(self):
         self.table_money = 0
         self.house.hand = []
+        self.player.hand = []
+        self.player.hand2 = []
         self.bot1.hand = []
         self.bot1.hand2 = []
         self.bot2.hand = []
@@ -94,6 +98,7 @@ class Game:
 
         for _ in range(2):
             self.house.hit(self.deck.deal_card())
+            self.player.hit(self.deck.deal_card())
             self.bot1.hit(self.deck.deal_card())
             self.bot2.hit(self.deck.deal_card())
             self.bot3.hit(self.deck.deal_card())
@@ -107,6 +112,9 @@ class Game:
 
         if player_name == "house":
             self.house.hit(self.deck.deal_card())
+
+        elif player_name == "player":
+            self.player.hit(self.deck.deal_card())
         
         elif player_name == "bot1":
             self.bot1.hit(self.deck.deal_card())
@@ -124,9 +132,12 @@ class Game:
         self.cards_left_check()
         self.card_count += self.count_card(self.deck.peek_card())
 
-        if player_name == "bot1":
+        if player_name == "player":
+            self.player.hit_2(self.deck.deal_card())
+        
+        elif player_name == "bot1":
             self.bot1.hit_2(self.deck.deal_card())
-
+            
         elif player_name == "bot2":
             self.bot2.hit_2(self.deck.deal_card())
 

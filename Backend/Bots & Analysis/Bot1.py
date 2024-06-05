@@ -17,7 +17,7 @@ class Bot1:
         self.hand2 = []
 
 
-    # This is used for initializing or clearing the hand of the house
+    # This is used for initializing or clearing the hand of the bot1
     # At the beginning of each play 
     def init_hand(self):
         self.hand = []
