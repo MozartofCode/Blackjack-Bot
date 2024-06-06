@@ -88,10 +88,10 @@ def calculate_profit_loss_percentage(init_money, final_money):
 
 
 def print_calculated_profits(house, bot1, bot2, bot3, bot4, bot5, bot6, bot7):
-    if house.money < 10000:
-        print("Total loss of House: " + str(calculate_profit_loss_percentage(10000, house.money)) + "%")
+    if house.money < 1000000:
+        print("Total loss of House: " + str(calculate_profit_loss_percentage(1000000, house.money)) + "%")
     else:
-        print("Total profit of House: " + str(calculate_profit_loss_percentage(10000, house.money)) + "%")
+        print("Total profit of House: " + str(calculate_profit_loss_percentage(1000000, house.money)) + "%")
 
     if bot1.money < 10000:
         print("Total loss of Bot1: " + str(calculate_profit_loss_percentage(10000, bot1.money)) + "%")
@@ -319,7 +319,8 @@ def bot2_playing(bot2, house, game, bet):
                 bot2.lose_money(bet)
                 house.gain_money(bet)
                 bot2_playing = False
-        
+
+
     if bot2_move != "SP":
         print(str(bot2.hand))
 
@@ -782,15 +783,15 @@ def house_playing(game, house, bot1_results, bot2_results, bot3_results, bot4_re
                 bot7_results[5].lose_money(bot7_results[4])
                 house.gain_money(bot7_results[4])
         
-        print(str(house.hand))
-        print()     
+    print(str(house.hand))
+    print()     
 
 
 # This is the main function that runs the simulation (game)
 # Simulation and the Analysis is going to be based on 1000 played hands
 def main():
 
-    game_count = 10
+    game_count = 1000
     game = Game()
     
     #create_csv_dataset()
@@ -922,40 +923,58 @@ def main():
         if bot1_in_game:
             print("Bot1 played...")
             bot1_results = bot1_playing(bot1, house, game, bet)
-            
+        else:
+            # Just creating a bad result for processing in the house function
+            bot1_results = [False,False,False, "", 00, bot1]
 
         print()
         if bot2_in_game:
             print("Bot2 played...")
             bot2_results = bot2_playing(bot2, house, game, bot2_bet)
-            
+        else:
+            # Just creating a bad result for processing in the house function
+            bot2_results = [False,False,False, "", 00, bot2]
+
         print()
         if bot3_in_game:
             print("Bot3 played...")
             bot3_results = bot3_playing(bot3, house, game, bot3_bet)
+        else:
+            # Just creating a bad result for processing in the house function
+            bot3_results = [False,False,False, "", 00, bot3]
             
         print()
         if bot4_in_game:
             print("Bot4 played...")
             bot4_results = bot4_playing(bot4, house, game, bot4_bet)
+        else:
+            # Just creating a bad result for processing in the house function
+            bot4_results = [False,False,False, "", 00, bot4]
         
         print()
         if bot5_in_game:
             print("Bot5 played...")
             bot5_results = bot5_playing(bot5, house, game, bot5_bet)
-            
+        else:
+            # Just creating a bad result for processing in the house function
+            bot5_results = [False,False,False, "", 00, bot5]
+        
         print()
         if bot6_in_game:
             print("Bot6 played...")
             bot6_results = bot6_playing(bot6, house, game, bot6_bet)
-        
+        else:
+            # Just creating a bad result for processing in the house function
+            bot6_results = [False,False,False, "", 00, bot6]
+
         print()
         if bot7_in_game:
             print("Bot7 played...")
             bot7_results = bot7_playing(bot7, house, game, bot7_bet)
+        else:
+            # Just creating a bad result for processing in the house function
+            bot7_results = [False,False,False, "", 00, bot7]
 
-        #TODO
-        #TODO the whole house playing since I have problems with player if they are not playing or bust
         print()
         print("House played...")
         house_playing(game, house, bot1_results, bot2_results, bot3_results, bot4_results, bot5_results, bot6_results, bot7_results)

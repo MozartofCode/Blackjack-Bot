@@ -57,7 +57,7 @@ class Game:
 
     # Initializes the players, money and deck for the game
     def __init__(self):
-        house_money = 10000000
+        house_money = 1000000
         player_money = 10000
 
         self.deck = Deck()
