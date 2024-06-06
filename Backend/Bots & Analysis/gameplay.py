@@ -109,19 +109,33 @@ class Game:
 
     # Deals the initial hands to players
     # Each players gets 2 cards
-    def deal_initial_hands(self):
+    def deal_initial_hands(self, bot1_in_game, bot2_in_game, bot3_in_game, bot4_in_game, bot5_in_game, bot6_in_game, bot7_in_game):
         self.cards_left_check()
 
         for _ in range(2):
             self.house.hit(self.deck.deal_card())
             self.player.hit(self.deck.deal_card())
-            self.bot1.hit(self.deck.deal_card())
-            self.bot2.hit(self.deck.deal_card())
-            self.bot3.hit(self.deck.deal_card())
-            self.bot4.hit(self.deck.deal_card())
-            self.bot5.hit(self.deck.deal_card())
-            self.bot6.hit(self.deck.deal_card())
-            self.bot7.hit(self.deck.deal_card())
+            
+            if bot1_in_game:
+                self.bot1.hit(self.deck.deal_card())
+            
+            if bot2_in_game:
+                self.bot2.hit(self.deck.deal_card())
+            
+            if bot3_in_game:
+                self.bot3.hit(self.deck.deal_card())
+            
+            if bot4_in_game:
+                self.bot4.hit(self.deck.deal_card())
+            
+            if bot5_in_game:
+                self.bot5.hit(self.deck.deal_card())
+            
+            if bot6_in_game:
+                self.bot6.hit(self.deck.deal_card())
+            
+            if bot7_in_game:
+                self.bot7.hit(self.deck.deal_card())
             
     
 
