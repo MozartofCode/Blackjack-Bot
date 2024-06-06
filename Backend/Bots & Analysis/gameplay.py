@@ -9,6 +9,10 @@ from Bot1 import Bot1
 from Bot2 import Bot2
 from Bot3 import Bot3
 from Player import Player
+from Bot4 import Bot4
+from Bot5 import Bot5
+from Bot6 import Bot6
+from Bot7 import Bot7
 
 
 class Deck:
@@ -66,6 +70,10 @@ class Game:
         self.bot1 = Bot1(player_money)
         self.bot2 = Bot2(player_money)
         self.bot3 = Bot3(player_money)
+        self.bot4 = Bot4(player_money)
+        self.bot5 = Bot5(player_money)
+        self.bot6 = Bot6(player_money)
+        self.bot7 = Bot7(player_money)
         
 
     # Clears players hands (used at the start of each play)
@@ -80,12 +88,20 @@ class Game:
         self.bot2.hand2 = []
         self.bot3.hand = []
         self.bot3.hand2 = []
+        self.bot4.hand = []
+        self.bot4.hand2 = []
+        self.bot5.hand = []
+        self.bot5.hand2 = []
+        self.bot6.hand = []
+        self.bot6.hand2 = []
+        self.bot7.hand = []
+        self.bot7.hand2 = []
 
 
     # Checks if enough cards are left in the deck and shuffles if not
-    # 20 minimum is a random number since 5 players if each plan to get 5 cards
+    # 40 minimum is a random number since 8 players if each plan to get 5 cards
     def cards_left_check(self):
-        if len(self.deck.cards) <= 25:
+        if len(self.deck.cards) <= 40:
             self.deck = Deck()
             self.deck.shuffle()
             self.card_count = 0
@@ -102,6 +118,11 @@ class Game:
             self.bot1.hit(self.deck.deal_card())
             self.bot2.hit(self.deck.deal_card())
             self.bot3.hit(self.deck.deal_card())
+            self.bot4.hit(self.deck.deal_card())
+            self.bot5.hit(self.deck.deal_card())
+            self.bot6.hit(self.deck.deal_card())
+            self.bot7.hit(self.deck.deal_card())
+            
     
 
     # Deals a single card to a specific player (Hit)
@@ -124,6 +145,18 @@ class Game:
 
         elif player_name == "bot3":
             self.bot3.hit(self.deck.deal_card())
+        
+        elif player_name == "bot4":
+            self.bot4.hit(self.deck.deal_card())
+        
+        elif player_name == "bot5":
+            self.bot5.hit(self.deck.deal_card())
+        
+        elif player_name == "bot6":
+            self.bot6.hit(self.deck.deal_card())
+        
+        elif player_name == "bot7":
+            self.bot7.hit(self.deck.deal_card())
     
     
     # Same as the deal single card for the second hand when a player splits
@@ -143,6 +176,18 @@ class Game:
 
         elif player_name == "bot3":
             self.bot3.hit_2(self.deck.deal_card())
+        
+        elif player_name == "bot4":
+            self.bot4.hit_2(self.deck.deal_card())
+        
+        elif player_name == "bot5":
+            self.bot5.hit_2(self.deck.deal_card())
+        
+        elif player_name == "bot6":
+            self.bot6.hit_2(self.deck.deal_card())
+        
+        elif player_name == "bot7":
+            self.bot7.hit_2(self.deck.deal_card())
 
 
     # Hi - Lo Card Counting logic

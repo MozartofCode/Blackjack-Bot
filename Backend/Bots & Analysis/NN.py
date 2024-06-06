@@ -39,7 +39,7 @@ def preprocess_input(player_hand, house_upcard, count, bet):
     return input_features.reshape(1, -1)
 
 
-def create_NN_model():
+def create_NN_model(filename, output_model_name):
     # Normalize and one-hot encode the cards
     num_cards = 52
     def one_hot_encode(cards, num_classes):
@@ -50,7 +50,7 @@ def create_NN_model():
 
 
     # Load the dataset
-    df = pd.read_csv('blackjack_dataset.csv')
+    df = pd.read_csv(filename)
 
     # Encode player hand and house upcard
     df['Player Hand'] = df['Player Hand'].apply(eval)
@@ -91,7 +91,7 @@ def create_NN_model():
     X_train, X_test, y_move_train, y_move_test = train_test_split(X, y_move, test_size=0.2, random_state=42)
     model.fit(X_train, y_move_train, epochs=50, validation_split=0.2)
 
-    model_path = "./blackjack_model_bot2.h5"
+    model_path = output_model_name
     model.save(model_path)
 
 
@@ -108,5 +108,6 @@ def predict_move(player_hand, house_upcard, count, bet, model, df):
     return predicted_move
 
 
-# Used this initially for creating the model
-#create_NN_model()
+# Used this initially for creating the models
+#create_NN_model("blackjack_dataset.csv", "blackjack_model_bot2.h5")
+#create_NN_model("blackjack_dataset_player.csv", "blackjack_model_player.h5")

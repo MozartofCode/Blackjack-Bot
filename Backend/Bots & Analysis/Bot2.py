@@ -3,7 +3,7 @@
 # Bot2 is an AI bot that makes decisions and bettings based on a neural network and the .csv dataset
 # that I generated with the moves of bot1
 
-from NN import predict_move, create_NN_model
+from NN import predict_move
 import math
 import pandas as pd
 import tensorflow as tf
@@ -15,7 +15,6 @@ class Bot2:
         self.hand2 = []
         self.model = tf.keras.models.load_model('blackjack_model_bot2.h5')
         self.df = pd.read_csv('blackjack_dataset.csv')
-
 
 
     def play(self, player_hand, house_upcard, count, bet, is_initial):
@@ -209,13 +208,13 @@ class Bot2:
         return self.calculate_hand_val() == 21
 
 
-    # Takes money from bot1's account (house won)
+    # Takes money from bot2's account (house won)
     # :param loss: House's loss 
     def lose_money(self, loss):
         self.money -= loss
     
 
-    # Give money to Bot1 (house lost)
+    # Give money to Bot2 (house lost)
     # :param gain: money gained from other player
     def gain_money(self, gain):
         self.money += gain
