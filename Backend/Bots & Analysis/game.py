@@ -79,13 +79,11 @@ def calculate_profit_loss_percentage(init_money, final_money):
 # I'll be playing kind of randomly (within reason still) to generate some data, no card counting or cheating
 def main():
     game = Game()
-    game_count = 1000
+    game_count = 100
 
     print("Welcome to Casino Royale...")
     print("Let's play some blackjack!")
     print()
-    
-
     
     while game_count > 0:
         
@@ -120,7 +118,6 @@ def main():
         game.deal_initial_hands()
         print("House: " + str(house.hand[0]))
         print("Player: " + str(player.hand))
-        player.hand = ["Jack of hearts", "Jack of Diamonds"]
         print()
 
         playing = True
@@ -128,10 +125,6 @@ def main():
         # For split functionality
         playing_1 = True
         playing_2 = True
-
-        # Adding the play to the csv file
-        # data_row = [list(player.hand), house.hand[0], game.card_count, move, bet]
-        # generate_csv_dataset(data_row, dataset_name)
 
         if player.is_21():
             print("Blackjack!")
@@ -141,6 +134,11 @@ def main():
 
         else:
             move = input("What do you want to do? (H/S/SU/SP/D): ")
+
+            # Adding the play to the csv file
+            data_row = [list(player.hand), house.hand[0], game.card_count, move, bet]
+            generate_csv_dataset(data_row, "blacjkjack_dataset_player.csv")
+
 
             if move == "H":
                 
