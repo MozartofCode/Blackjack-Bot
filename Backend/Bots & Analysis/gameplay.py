@@ -5,13 +5,13 @@
 
 import random
 from House import House
-from Bot1 import Bot1
-from Bot2 import Bot2
-from Bot3 import Bot3
 from Player import Player
-from Bot4 import Bot4
-from Bot5 import Bot5
-from Bot6 import Bot6
+from Bots.Bot1 import Bot1 
+from Bots.Bot2 import Bot2
+from Bots.Bot3 import Bot3
+from Bots.Bot4 import Bot4
+from Bots.Bot5 import Bot5
+from Bots.Bot6 import Bot6
 
 class Deck:
 

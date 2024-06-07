@@ -3,7 +3,7 @@
 # Bot1 implements Basic Strategy for playing & Hi-Lo Card Counting for betting strategy
 
 import math
-from Basic_Strategy import apply_basic_strategy, apply_basic_strategy_2
+from Bots.Basic_Strategy import apply_basic_strategy, apply_basic_strategy_2
 
 
 class Bot1:
