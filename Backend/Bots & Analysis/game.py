@@ -33,7 +33,7 @@ def create_csv_dataset():
 # :param bot1: bot1 player
 # :param bot2: bot2 player
 # :param bot3: bot3 player
-def print_player_money(house, bot1, bot2, bot3, bot4, bot5, bot6, bot7):
+def print_player_money(house, bot1, bot2, bot3, bot4, bot5, bot6):
     print("Each players money:")
     print("House: $" + str(house.money))
     print("Bot1: $" + str(bot1.money))
@@ -42,7 +42,6 @@ def print_player_money(house, bot1, bot2, bot3, bot4, bot5, bot6, bot7):
     print("Bot4: $" + str(bot4.money))
     print("Bot5: $" + str(bot5.money))
     print("Bot6: $" + str(bot6.money))
-    print("Bot7: $" + str(bot7.money))
     
 
 # This function prints each player's hands
@@ -50,7 +49,7 @@ def print_player_money(house, bot1, bot2, bot3, bot4, bot5, bot6, bot7):
 # :param bot1: bot1 player
 # :param bot2: bot2 player
 # :param bot3: bot3 player
-def print_player_cards(house, bot1, bot2, bot3, bot4, bot5, bot6, bot7):
+def print_player_cards(house, bot1, bot2, bot3, bot4, bot5, bot6):
     print("House: " + str(house.hand))
     print("Bot1: " + str(bot1.hand))
     print("Bot2: " + str(bot2.hand))
@@ -58,7 +57,6 @@ def print_player_cards(house, bot1, bot2, bot3, bot4, bot5, bot6, bot7):
     print("Bot4: " + str(bot4.hand))
     print("Bot5: " + str(bot5.hand))
     print("Bot6: " + str(bot6.hand))
-    print("Bot7: " + str(bot7.hand))
     
 
 # This function specificially prints each player's initial hands (only one card is shown for house)
@@ -66,7 +64,7 @@ def print_player_cards(house, bot1, bot2, bot3, bot4, bot5, bot6, bot7):
 # :param bot1: bot1 player
 # :param bot2: bot2 player
 # :param bot3: bot3 player
-def print_initial_cards(house, bot1, bot2, bot3, bot4, bot5, bot6, bot7):
+def print_initial_cards(house, bot1, bot2, bot3, bot4, bot5, bot6):
     print("House: " + str(house.hand[0]))
     print("Bot1: " + str(bot1.hand))
     print("Bot2: " + str(bot2.hand))
@@ -74,7 +72,6 @@ def print_initial_cards(house, bot1, bot2, bot3, bot4, bot5, bot6, bot7):
     print("Bot4: " + str(bot4.hand))
     print("Bot5: " + str(bot5.hand))
     print("Bot6: " + str(bot6.hand))
-    print("Bot7: " + str(bot7.hand))
 
 
 # This function calculates the percentage of loss or profit for a player 
@@ -87,7 +84,7 @@ def calculate_profit_loss_percentage(init_money, final_money):
 
 
 
-def print_calculated_profits(house, bot1, bot2, bot3, bot4, bot5, bot6, bot7):
+def print_calculated_profits(house, bot1, bot2, bot3, bot4, bot5, bot6):
     if house.money < 1000000:
         print("Total loss of House: " + str(calculate_profit_loss_percentage(1000000, house.money)) + "%")
     else:
@@ -122,11 +119,6 @@ def print_calculated_profits(house, bot1, bot2, bot3, bot4, bot5, bot6, bot7):
         print("Total loss of Bot6: " + str(calculate_profit_loss_percentage(10000, bot6.money)) + "%")
     else:
         print("Total profit of Bot6: " + str(calculate_profit_loss_percentage(10000, bot6.money)) + "%")
-    
-    if bot7.money < 10000:
-        print("Total loss of Bot7: " + str(calculate_profit_loss_percentage(10000, bot7.money)) + "%")
-    else:
-        print("Total profit of Bot7: " + str(calculate_profit_loss_percentage(10000, bot7.money)) + "%")
     
 
 
@@ -640,20 +632,14 @@ def bot5_playing(bot5, house, game, bet):
 
 
 
-
-
-
-
 def bot6_playing():
     return
 
-def bot7_playing():
-    return
 
 
 # House starts by looking if there is any cards playing that it's immediately better before hitting and gets rid of them
 # results = [bot2_playing_1, bot2_playing_2, bot2_playing, bot2_move, bot2_bet, bot2] etc.
-def house_playing(game, house, bot1_results, bot2_results, bot3_results, bot4_results, bot5_results, bot6_results, bot7_results):
+def house_playing(game, house, bot1_results, bot2_results, bot3_results, bot4_results, bot5_results, bot6_results):
         
     # Looking at each hand initially for an easy win
     
@@ -783,28 +769,6 @@ def house_playing(game, house, bot1_results, bot2_results, bot3_results, bot4_re
             bot6_results[5].lose_money(bot6_results[4])
             house.gain_money(bot6_results[4])
             bot6_results[2] = False
-
-    if bot7_results[3] == "SP":
-        if bot7_results[2]:
-            if bot7_results[0]:
-                
-                if house.calculate_hand_val() > bot7_results[5].calculate_hand_val():
-                    bot7_results[5].lose_money(bot7_results[4])
-                    house.gain_money(bot7_results[4])
-                    bot7_results[0] = False
-
-            if bot7_results[1]:
-                if house.calculate_hand_val() > bot7_results[5].calculate_hand_val_2():
-                    bot7_results[5].lose_money(bot7_results[4])
-                    house.gain_money(bot7_results[4])
-                    bot7_results[1] = False
-    
-    elif bot7_results[2]:
-        if house.calculate_hand_val() > bot7_results[5].calculate_hand_val():
-            bot7_results[5].lose_money(bot7_results[4])
-            house.gain_money(bot7_results[4])
-            bot7_results[2] = False
-
 
     # Now looking at each one specifically
     # Looking at bot 1
@@ -1043,45 +1007,6 @@ def house_playing(game, house, bot1_results, bot2_results, bot3_results, bot4_re
                 bot6_results[5].lose_money(bot6_results[4])
                 house.gain_money(bot6_results[4])
     
-    # Looking at bot 7
-    if bot7_results[3] == "SP":
-        if bot7_results[2]:
-            if bot7_results[0]:
-                while house.calculate_hand_val() < 17 and bot7_results[5].calculate_hand_val() > house.calculate_hand_val():
-                    game.deal_single_card("house")
-                    
-                if house.calculate_hand_val() > 21 or bot7_results[5].calculate_hand_val() > house.calculate_hand_val():
-                    bot7_results[5].gain_money(bot7_results[4])
-                    house.lose_money(bot7_results[4])
-                    
-                elif house.calculate_hand_val() > bot7_results[5].calculate_hand_val():
-                    bot7_results[5].lose_money(bot7_results[4])
-                    house.gain_money(bot7_results[4])
-
-            if bot7_results[1]:
-                while house.calculate_hand_val() < 17 and bot7_results[5].calculate_hand_val_2() > house.calculate_hand_val():
-                    game.deal_single_card("house")
-                    
-                if house.calculate_hand_val() > 21 or bot7_results[5].calculate_hand_val_2() > house.calculate_hand_val():
-                    bot7_results[5].gain_money(bot7_results[4])
-                    house.lose_money(bot7_results[4])
-                    
-                elif house.calculate_hand_val() > bot7_results[5].calculate_hand_val_2():
-                    bot7_results[5].lose_money(bot7_results[4])
-                    house.gain_money(bot7_results[4])
-
-        elif bot7_results[2]:
-            while house.calculate_hand_val() < 17 and bot7_results[5].calculate_hand_val() > house.calculate_hand_val():
-                game.deal_single_card("house")
-            
-            if house.calculate_hand_val() > 21 or bot7_results[5].calculate_hand_val() > house.calculate_hand_val():
-                bot7_results[5].gain_money(bot7_results[4])
-                house.lose_money(bot7_results[4])
-            
-            elif house.calculate_hand_val() > bot7_results[5].calculate_hand_val():
-                bot7_results[5].lose_money(bot7_results[4])
-                house.gain_money(bot7_results[4])
-        
     print(str(house.hand))
     print()     
 
@@ -1111,7 +1036,6 @@ def main():
         bot4 = game.bot4
         bot5 = game.bot5
         bot6 = game.bot6
-        bot7 = game.bot7
 
         bot1_in_game = True
         bot2_in_game = True
@@ -1119,7 +1043,6 @@ def main():
         bot4_in_game = True
         bot5_in_game = True
         bot6_in_game = False
-        bot7_in_game = False
 
         if bot1.money <= 0:
             print()
@@ -1150,11 +1073,6 @@ def main():
             print()
             print("Game Over for Bot6...")
             bot6_in_game = False
-        
-        elif bot7.money <= 0:
-            print()
-            print("Game Over for Bot7...")
-            bot7_in_game = False
 
         elif house.money <= 0:
             print("Game Over for House...")
@@ -1164,7 +1082,7 @@ def main():
         print("Let's play a new hand...")
         print()
 
-        print_player_money(house, bot1, bot2, bot3, bot4, bot5, bot6, bot7)
+        print_player_money(house, bot1, bot2, bot3, bot4, bot5, bot6)
 
         # Betting
         
@@ -1203,20 +1121,14 @@ def main():
             print("Bot6 betting...")        
             bot6_bet = bot6.bet(game)
             print("Bot6: $" + str(bot6_bet))
-        
-        if bot7_in_game:    
-            print()
-            print("Bot7 betting...")        
-            bot7_bet = bot7.bet(game)
-            print("Bot7: $" + str(bot7_bet))
 
         # Dealing Cards
 
         print()
         print("Dealing cards...")
         
-        game.deal_initial_hands(bot1_in_game, bot2_in_game, bot3_in_game, bot4_in_game, bot5_in_game, bot6_in_game, bot7_in_game)
-        print_initial_cards(house, bot1, bot2, bot3, bot4, bot5, bot6, bot7)
+        game.deal_initial_hands(bot1_in_game, bot2_in_game, bot3_in_game, bot4_in_game, bot5_in_game, bot6_in_game)
+        print_initial_cards(house, bot1, bot2, bot3, bot4, bot5, bot6)
 
         print()
         if bot1_in_game:
@@ -1267,23 +1179,15 @@ def main():
             bot6_results = [False,False,False, "", 00, bot6]
 
         print()
-        if bot7_in_game:
-            print("Bot7 played...")
-            bot7_results = bot7_playing(bot7, house, game, bot7_bet)
-        else:
-            # Just creating a bad result for processing in the house function
-            bot7_results = [False,False,False, "", 00, bot7]
-
-        print()
         print("House played...")
-        house_playing(game, house, bot1_results, bot2_results, bot3_results, bot4_results, bot5_results, bot6_results, bot7_results)
+        house_playing(game, house, bot1_results, bot2_results, bot3_results, bot4_results, bot5_results, bot6_results)
 
         if game_count == 0:
             print("Simulation finished after playing 1000 hands..." )
             print()
-            print_player_money(house, bot1, bot2, bot3, bot4, bot5, bot6, bot7)    
+            print_player_money(house, bot1, bot2, bot3, bot4, bot5, bot6)    
             print()
-            print_calculated_profits(house, bot1, bot2, bot3, bot4, bot5, bot6, bot7)
+            print_calculated_profits(house, bot1, bot2, bot3, bot4, bot5, bot6)
             print()
 
 

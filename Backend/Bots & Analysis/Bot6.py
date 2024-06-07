@@ -1,13 +1,13 @@
 # @Author: Bertan Berker
 # @Filename: Bot6.py
-# This bot makes decisions based on a pretrained model from hugging face (comp vision?)
+# This bot makes decisions based on reinforcement learning
 
 class Bot6:
     def __init__(self, money):
         self.money = money
         self.hand = []
         self.hand2 = []
-    
+
     
     # Hit move in blackjack, adds a card to the bot2's hand
     # :param card: card to add
