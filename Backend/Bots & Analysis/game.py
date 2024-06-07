@@ -434,8 +434,124 @@ def bot3_playing(bot3, house, game, bet):
     
     return [bot3_playing_1, bot3_playing_2, bot3_playing, bot3_move, bet, bot3]
 
-def bot4_playing():
-    return
+
+
+def bot4_playing(bot4, house, game, bet):
+    bot4_move = bot4.play(bot4.hand, house.hand[0], game.card_count, bet, True)
+    bot4_playing = True
+
+    # For split functionality
+    bot4_playing_1 = True
+    bot4_playing_2 = True
+
+    if bot4.is_21():
+        print("Blackjack!")
+        bot4_playing = False
+        bot4.gain_money(3 * bet // 2)
+        house.lose_money(3 * bet // 2)
+
+    elif bot4_move == "H":
+        game.deal_single_card("bot4")
+
+        while (not bot4.is_over_21() or not bot4.is_21) and bot4.play(bot4.hand, house.hand[0], game.card_count, bet, False) == "H":
+            game.deal_single_card("bot4")
+
+        if bot4.is_over_21():
+            bot4.lose_money(bet)
+            house.gain_money(bet)
+            bot4_playing = False
+
+    elif bot4_move == "S":
+        bot4.stand()    
+                
+    elif bot4_move == "SU":
+        bot4.surrender(bet)
+        house.gain_money(bet//2)
+        bot4_playing = False
+                
+
+    elif bot4_move == "SP":
+        if bot4.money >= bet: 
+            # Two separate hands
+            bot4.hand2.append(bot4.hand[-1])
+            bot4.hand.pop()
+
+            # For Hand1:
+            game.deal_single_card("bot4")
+            game.deal_single_card_2("bot4")
+                        
+            if bot4.is_21():  
+                print("Blackjack!")
+                bot4_playing_2 = False
+                bot4.gain_money(3 * bet // 2)
+                house.lose_money(3 * bet // 2)
+
+            else:
+                while (not bot4.is_over_21() or not bot4.is_21) and bot4.play(bot4.hand, house.hand[0], game.card_count, bet, False) == "H":
+                    game.deal_single_card("bot4")
+
+                if bot4.is_over_21():
+                    bot4.lose_money(bet)
+                    house.gain_money(bet)
+                    bot4_playing_1 = False
+
+            # For Hand2:
+                
+            if bot4.calculate_hand_val_2() == 21:
+                print("Blackjack!")
+                bot4_playing_2 = False
+                bot4.gain_money(3 * bet // 2)
+                house.lose_money(3 * bet // 2)
+                
+            else: 
+                while bot4.calculate_hand_val_2() < 21 and bot4.play_2(bot4.hand2, house.hand[0], game.card_count, bet, False) == "H":
+                    game.deal_single_card_2("bot4")
+
+                if bot4.calculate_hand_val_2() > 21:
+                    bot4.lose_money(bet)
+                    house.gain_money(bet)
+                    bot4_playing_2 = False
+
+    elif bot4_move == "D":
+        if bot4.money >= bet:
+            game.deal_single_card("bot4")
+            bet += bet
+
+            if bot4.is_over_21():
+                bot4.lose_money(bet)
+                house.gain_money(bet)
+                bot4_playing = False
+
+
+    if bot4_move != "SP":
+        print(str(bot4.hand))
+
+    else:
+        if not bot4_playing_1 and not bot4_playing_2:
+            bot4_playing = False
+
+        print(str(bot4.hand))
+        print(str(bot4.hand2))
+    
+    return [bot4_playing_1, bot4_playing_2, bot4_playing, bot4_move, bet, bot4]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def bot5_playing():
     return
@@ -886,7 +1002,7 @@ def house_playing(game, house, bot1_results, bot2_results, bot3_results, bot4_re
 # Simulation and the Analysis is going to be based on 1000 played hands
 def main():
 
-    game_count = 5
+    game_count = 100
     game = Game()
     
     #create_csv_dataset()
@@ -912,7 +1028,7 @@ def main():
         bot1_in_game = True
         bot2_in_game = True
         bot3_in_game = True
-        bot4_in_game = False
+        bot4_in_game = True
         bot5_in_game = False
         bot6_in_game = False
         bot7_in_game = False
