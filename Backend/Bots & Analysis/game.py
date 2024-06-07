@@ -536,6 +536,105 @@ def bot4_playing(bot4, house, game, bet):
     return [bot4_playing_1, bot4_playing_2, bot4_playing, bot4_move, bet, bot4]
 
 
+def bot5_playing(bot5, house, game, bet):
+    
+    bot5_move = bot5.play(bot5.hand, house.hand[0], game.card_count, bet, True)
+    bot5_playing = True
+
+    # For split functionality
+    bot5_playing_1 = True
+    bot5_playing_2 = True
+
+    if bot5.is_21():
+        print("Blackjack!")
+        bot5_playing = False
+        bot5.gain_money(3 * bet // 2)
+        house.lose_money(3 * bet // 2)
+
+    elif bot5_move == "H":
+        game.deal_single_card("bot5")
+
+        while (not bot5.is_over_21() or not bot5.is_21) and bot5.play(bot5.hand, house.hand[0], game.card_count, bet, False) == "H":
+            game.deal_single_card("bot5")
+
+        if bot5.is_over_21():
+            bot5.lose_money(bet)
+            house.gain_money(bet)
+            bot5_playing = False
+
+    elif bot5_move == "S":
+        bot5.stand()    
+                
+    elif bot5_move == "SU":
+        bot5.surrender(bet)
+        house.gain_money(bet//2)
+        bot5_playing = False
+                
+
+    elif bot5_move == "SP":
+        if bot5.money >= bet: 
+            # Two separate hands
+            bot5.hand2.append(bot5.hand[-1])
+            bot5.hand.pop()
+
+            # For Hand1:
+            game.deal_single_card("bot5")
+            game.deal_single_card_2("bot5")
+                        
+            if bot5.is_21():  
+                print("Blackjack!")
+                bot5_playing_2 = False
+                bot5.gain_money(3 * bet // 2)
+                house.lose_money(3 * bet // 2)
+
+            else:
+                while (not bot5.is_over_21() or not bot5.is_21) and bot5.play(bot5.hand, house.hand[0], game.card_count, bet, False) == "H":
+                    game.deal_single_card("bot5")
+
+                if bot5.is_over_21():
+                    bot5.lose_money(bet)
+                    house.gain_money(bet)
+                    bot5_playing_1 = False
+
+            # For Hand2:
+                
+            if bot5.calculate_hand_val_2() == 21:
+                print("Blackjack!")
+                bot5_playing_2 = False
+                bot5.gain_money(3 * bet // 2)
+                house.lose_money(3 * bet // 2)
+                
+            else: 
+                while bot5.calculate_hand_val_2() < 21 and bot5.play_2(bot5.hand2, house.hand[0], game.card_count, bet, False) == "H":
+                    game.deal_single_card_2("bot5")
+
+                if bot5.calculate_hand_val_2() > 21:
+                    bot5.lose_money(bet)
+                    house.gain_money(bet)
+                    bot5_playing_2 = False
+
+    elif bot5_move == "D":
+        if bot5.money >= bet:
+            game.deal_single_card("bot5")
+            bet += bet
+
+            if bot5.is_over_21():
+                bot5.lose_money(bet)
+                house.gain_money(bet)
+                bot5_playing = False
+
+
+    if bot5_move != "SP":
+        print(str(bot5.hand))
+
+    else:
+        if not bot5_playing_1 and not bot5_playing_2:
+            bot5_playing = False
+
+        print(str(bot5.hand))
+        print(str(bot5.hand2))
+    
+    return [bot5_playing_1, bot5_playing_2, bot5_playing, bot5_move, bet, bot5]
 
 
 
@@ -544,17 +643,6 @@ def bot4_playing(bot4, house, game, bet):
 
 
 
-
-
-
-
-
-
-
-
-
-def bot5_playing():
-    return
 
 def bot6_playing():
     return
@@ -1029,7 +1117,7 @@ def main():
         bot2_in_game = True
         bot3_in_game = True
         bot4_in_game = True
-        bot5_in_game = False
+        bot5_in_game = True
         bot6_in_game = False
         bot7_in_game = False
 
