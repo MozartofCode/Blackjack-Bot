@@ -630,10 +630,34 @@ def bot5_playing(bot5, house, game, bet):
 
 
 
+def bot6_playing(bot6, house, game, bet):
+    bot6_move = bot6.play(bot6, house.hand[0])
+    bot6_playing = True
 
+    if bot6.is_21():
+        print("Blackjack!")
+        bot6_playing = False
+        bot6.gain_money(3 * bet // 2)
+        house.lose_money(3 * bet // 2)
 
-def bot6_playing():
-    return
+    elif bot6_move == "H":
+        game.deal_single_card("bot6")
+
+        while (not bot6.is_over_21() or not bot6.is_21) and bot6.play(bot6, house.hand[0]) == "H":
+            game.deal_single_card("bot6")
+
+        if bot6.is_over_21():
+            bot6.lose_money(bet)
+            house.gain_money(bet)
+            bot6_playing = False
+
+    elif bot6_move == "S":
+        bot6.stand()    
+    
+    print(str(bot6.hand))
+
+    return [True, True, bot6_playing, bot6_move, bet, bot6]
+
 
 
 
@@ -749,26 +773,12 @@ def house_playing(game, house, bot1_results, bot2_results, bot3_results, bot4_re
             house.gain_money(bot5_results[4])
             bot5_results[2] = False
 
-    if bot6_results[3] == "SP":
-        if bot6_results[2]:
-            if bot6_results[0]:
-                
-                if house.calculate_hand_val() > bot6_results[5].calculate_hand_val():
-                    bot6_results[5].lose_money(bot6_results[4])
-                    house.gain_money(bot6_results[4])
-                    bot6_results[0] = False
-
-            if bot6_results[1]:
-                if house.calculate_hand_val() > bot6_results[5].calculate_hand_val_2():
-                    bot6_results[5].lose_money(bot6_results[4])
-                    house.gain_money(bot6_results[4])
-                    bot6_results[1] = False
-    
-    elif bot6_results[2]:
+    if bot6_results[2]:
         if house.calculate_hand_val() > bot6_results[5].calculate_hand_val():
             bot6_results[5].lose_money(bot6_results[4])
             house.gain_money(bot6_results[4])
             bot6_results[2] = False
+        
 
     # Now looking at each one specifically
     # Looking at bot 1
@@ -809,7 +819,21 @@ def house_playing(game, house, bot1_results, bot2_results, bot3_results, bot4_re
             elif house.calculate_hand_val() > bot1_results[5].calculate_hand_val():
                 bot1_results[5].lose_money(bot1_results[4])
                 house.gain_money(bot1_results[4])
-        
+
+    elif bot1_results[2]:
+        while house.calculate_hand_val() < 17 and bot1_results[5].calculate_hand_val() > house.calculate_hand_val():
+            game.deal_single_card("house")
+                    
+        if house.calculate_hand_val() > 21 or bot1_results[5].calculate_hand_val() > house.calculate_hand_val():
+            bot1_results[5].gain_money(bot1_results[4])
+            house.lose_money(bot1_results[4])
+                    
+        elif house.calculate_hand_val() > bot1_results[5].calculate_hand_val():
+            bot1_results[5].lose_money(bot1_results[4])
+            house.gain_money(bot1_results[4])
+
+
+
     # Looking at bot 2
     if bot2_results[3] == "SP":
         if bot2_results[2]:
@@ -848,6 +872,18 @@ def house_playing(game, house, bot1_results, bot2_results, bot3_results, bot4_re
             elif house.calculate_hand_val() > bot2_results[5].calculate_hand_val():
                 bot2_results[5].lose_money(bot2_results[4])
                 house.gain_money(bot2_results[4])
+    
+    elif bot2_results[2]:
+        while house.calculate_hand_val() < 17 and bot2_results[5].calculate_hand_val() > house.calculate_hand_val():
+            game.deal_single_card("house")
+                    
+        if house.calculate_hand_val() > 21 or bot2_results[5].calculate_hand_val() > house.calculate_hand_val():
+            bot2_results[5].gain_money(bot2_results[4])
+            house.lose_money(bot2_results[4])
+                    
+        elif house.calculate_hand_val() > bot2_results[5].calculate_hand_val():
+            bot2_results[5].lose_money(bot2_results[4])
+            house.gain_money(bot2_results[4])
 
 
     # Looking at bot 3
@@ -889,6 +925,17 @@ def house_playing(game, house, bot1_results, bot2_results, bot3_results, bot4_re
                 bot3_results[5].lose_money(bot3_results[4])
                 house.gain_money(bot3_results[4])
 
+    elif bot3_results[2]:
+        while house.calculate_hand_val() < 17 and bot3_results[5].calculate_hand_val() > house.calculate_hand_val():
+            game.deal_single_card("house")
+                    
+        if house.calculate_hand_val() > 21 or bot3_results[5].calculate_hand_val() > house.calculate_hand_val():
+            bot3_results[5].gain_money(bot3_results[4])
+            house.lose_money(bot3_results[4])
+                    
+        elif house.calculate_hand_val() > bot3_results[5].calculate_hand_val():
+            bot3_results[5].lose_money(bot3_results[4])
+            house.gain_money(bot3_results[4])
 
     # Looking at bot 4
     if bot4_results[3] == "SP":
@@ -929,6 +976,18 @@ def house_playing(game, house, bot1_results, bot2_results, bot3_results, bot4_re
                 bot4_results[5].lose_money(bot4_results[4])
                 house.gain_money(bot4_results[4])
     
+    elif bot4_results[2]:
+        while house.calculate_hand_val() < 17 and bot4_results[5].calculate_hand_val() > house.calculate_hand_val():
+            game.deal_single_card("house")
+                    
+        if house.calculate_hand_val() > 21 or bot4_results[5].calculate_hand_val() > house.calculate_hand_val():
+            bot4_results[5].gain_money(bot4_results[4])
+            house.lose_money(bot4_results[4])
+                    
+        elif house.calculate_hand_val() > bot4_results[5].calculate_hand_val():
+            bot4_results[5].lose_money(bot4_results[4])
+            house.gain_money(bot4_results[4])
+
     # Looking at bot 5
     if bot5_results[3] == "SP":
         if bot5_results[2]:
@@ -968,44 +1027,32 @@ def house_playing(game, house, bot1_results, bot2_results, bot3_results, bot4_re
                 bot5_results[5].lose_money(bot5_results[4])
                 house.gain_money(bot5_results[4])
     
-    # Looking at bot 6
-    if bot6_results[3] == "SP":
-        if bot6_results[2]:
-            if bot6_results[0]:
-                while house.calculate_hand_val() < 17 and bot6_results[5].calculate_hand_val() > house.calculate_hand_val():
-                    game.deal_single_card("house")
+    
+    elif bot5_results[2]:
+        while house.calculate_hand_val() < 17 and bot5_results[5].calculate_hand_val() > house.calculate_hand_val():
+            game.deal_single_card("house")
                     
-                if house.calculate_hand_val() > 21 or bot6_results[5].calculate_hand_val() > house.calculate_hand_val():
-                    bot6_results[5].gain_money(bot6_results[4])
-                    house.lose_money(bot6_results[4])
+        if house.calculate_hand_val() > 21 or bot5_results[5].calculate_hand_val() > house.calculate_hand_val():
+            bot5_results[5].gain_money(bot5_results[4])
+            house.lose_money(bot5_results[4])
                     
-                elif house.calculate_hand_val() > bot6_results[5].calculate_hand_val():
-                    bot6_results[5].lose_money(bot6_results[4])
-                    house.gain_money(bot6_results[4])
+        elif house.calculate_hand_val() > bot5_results[5].calculate_hand_val():
+            bot5_results[5].lose_money(bot5_results[4])
+            house.gain_money(bot5_results[4])
 
-            if bot6_results[1]:
-                while house.calculate_hand_val() < 17 and bot6_results[5].calculate_hand_val_2() > house.calculate_hand_val():
-                    game.deal_single_card("house")
-                    
-                if house.calculate_hand_val() > 21 or bot6_results[5].calculate_hand_val_2() > house.calculate_hand_val():
-                    bot6_results[5].gain_money(bot6_results[4])
-                    house.lose_money(bot6_results[4])
-                    
-                elif house.calculate_hand_val() > bot6_results[5].calculate_hand_val_2():
-                    bot6_results[5].lose_money(bot6_results[4])
-                    house.gain_money(bot6_results[4])
 
-        elif bot6_results[2]:
-            while house.calculate_hand_val() < 17 and bot6_results[5].calculate_hand_val() > house.calculate_hand_val():
-                game.deal_single_card("house")
-            
-            if house.calculate_hand_val() > 21 or bot6_results[5].calculate_hand_val() > house.calculate_hand_val():
-                bot6_results[5].gain_money(bot6_results[4])
-                house.lose_money(bot6_results[4])
-            
-            elif house.calculate_hand_val() > bot6_results[5].calculate_hand_val():
-                bot6_results[5].lose_money(bot6_results[4])
-                house.gain_money(bot6_results[4])
+    # Looking at bot6
+    if bot6_results[2]:
+        while house.calculate_hand_val() < 17 and bot6_results[5].calculate_hand_val() > house.calculate_hand_val():
+            game.deal_single_card("house")
+                    
+        if house.calculate_hand_val() > 21 or bot6_results[5].calculate_hand_val() > house.calculate_hand_val():
+            bot6_results[5].gain_money(bot6_results[4])
+            house.lose_money(bot6_results[4])
+                    
+        elif house.calculate_hand_val() > bot6_results[5].calculate_hand_val():
+            bot6_results[5].lose_money(bot6_results[4])
+            house.gain_money(bot6_results[4])
     
     print(str(house.hand))
     print()     
@@ -1042,7 +1089,7 @@ def main():
         bot3_in_game = True
         bot4_in_game = True
         bot5_in_game = True
-        bot6_in_game = False
+        bot6_in_game = True
 
         if bot1.money <= 0:
             print()

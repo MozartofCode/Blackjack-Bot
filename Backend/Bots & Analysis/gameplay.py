@@ -90,7 +90,6 @@ class Game:
         self.bot5.hand = []
         self.bot5.hand2 = []
         self.bot6.hand = []
-        self.bot6.hand2 = []
 
     # Checks if enough cards are left in the deck and shuffles if not
     # 40 minimum is a random number since 8 players if each plan to get 5 cards
@@ -184,9 +183,6 @@ class Game:
         
         elif player_name == "bot5":
             self.bot5.hit_2(self.deck.deal_card())
-        
-        elif player_name == "bot6":
-            self.bot6.hit_2(self.deck.deal_card())
 
 
     # Hi - Lo Card Counting logic
