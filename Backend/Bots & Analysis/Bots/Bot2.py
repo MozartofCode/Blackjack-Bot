@@ -111,17 +111,17 @@ class Bot2:
         elif count == 5:
             return 200
 
-        elif money < 300:
-            return money
-        
-        elif count == 6:
-            return 300
-
         elif money < 500:
             return money
         
-        else:
+        elif count == 6:
             return 500
+
+        elif money < 1000:
+            return money
+        
+        else:
+            return 1000
     
 
     # Hit move in blackjack, adds a card to the bot2's hand
