@@ -1062,14 +1062,25 @@ def house_playing(game, house, bot1_results, bot2_results, bot3_results, bot4_re
 # Simulation and the Analysis is going to be based on 1000 played hands
 def main():
 
-    game_count = 100
+    game_count = 300
     game = Game()
     
     #create_csv_dataset()
+
+    # Percentage of limit, if reached bot takes off
+    # 30%
+    gain_limit = 13000
     
     print("Welcome to Casino Royale...")
     print("Let's play some blackjack!")
     print()
+
+    bot1_in_game = True
+    bot2_in_game = True
+    bot3_in_game = True
+    bot4_in_game = True
+    bot5_in_game = True
+    bot6_in_game = True
     
     while game_count > 0:
         
@@ -1084,44 +1095,71 @@ def main():
         bot5 = game.bot5
         bot6 = game.bot6
 
-        bot1_in_game = True
-        bot2_in_game = True
-        bot3_in_game = True
-        bot4_in_game = True
-        bot5_in_game = True
-        bot6_in_game = True
+        # Looking at the limit gain reached
+
+        if bot1.money >= gain_limit:
+            print()
+            print("Bot1 made incredible money! Taking off the table...")
+            bot1_in_game = False
+        
+        if bot2.money >= gain_limit:
+            print()
+            print("Bot2 made incredible money! Taking off the table...")
+            bot2_in_game = False
+        
+        if bot3.money >= gain_limit:
+            print()
+            print("Bot3 made incredible money! Taking off the table...")
+            bot3_in_game = False
+        
+        if bot4.money >= gain_limit:
+            print()
+            print("Bot4 made incredible money! Taking off the table...")
+            bot4_in_game = False
+        
+        if bot5.money >= gain_limit:
+            print()
+            print("Bot5 made incredible money! Taking off the table...")
+            bot5_in_game = False
+        
+        if bot6.money >= gain_limit:
+            print()
+            print("Bot6 made incredible money! Taking off the table...")
+            bot6_in_game = False
+
+        # Looking if bot's are game over
 
         if bot1.money <= 0:
             print()
             print("Game Over for Bot1...")
             bot1_in_game = False
         
-        elif bot2.money <= 0:
+        if bot2.money <= 0:
             print()
             print("Game Over for Bot2...")
             bot2_in_game = False
         
-        elif bot3.money <= 0:
+        if bot3.money <= 0:
             print()
             print("Game Over for Bot3...")
             bot3_in_game = False
         
-        elif bot4.money <= 0:
+        if bot4.money <= 0:
             print()
             print("Game Over for Bot3...")
             bot4_in_game = False
         
-        elif bot5.money <= 0:
+        if bot5.money <= 0:
             print()
             print("Game Over for Bot5...")
             bot5_in_game = False
         
-        elif bot6.money <= 0:
+        if bot6.money <= 0:
             print()
             print("Game Over for Bot6...")
             bot6_in_game = False
 
-        elif house.money <= 0:
+        if house.money <= 0:
             print("Game Over for House...")
             break
             
