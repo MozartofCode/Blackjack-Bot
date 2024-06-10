@@ -9,7 +9,7 @@ import csv
 # This function is used for generating data for the csv that will be used by bot2 (NN)
 # :param data_row: one row of data to be added to the csv file 
 # [player_hand, dealer_hand, count, move, bet]
-def generate_csv_dataset(data_row, dataset_name):
+def generate_csv_dataset(dataset_name, data_row):
     filename = dataset_name
 
     with open(filename, 'a', newline='') as file:
@@ -1272,7 +1272,7 @@ def main():
             print_calculated_profits(house, bot1, bot2, bot3, bot4, bot5, bot6)
             print()
 
-            header = [bot1.money, bot2.money, bot3.money, bot4.money, bot5.money, bot6.money, house.money]
+            header = [calculate_profit_loss_percentage(10000, bot1.money), calculate_profit_loss_percentage(10000, bot2.money), calculate_profit_loss_percentage(10000, bot3.money), calculate_profit_loss_percentage(10000, bot4.money), calculate_profit_loss_percentage(10000, bot5.money), calculate_profit_loss_percentage(10000, bot6.money), calculate_profit_loss_percentage(1000000, house.money)]
             generate_csv_dataset("Bots_Comparison.csv", header)
             print("Generated data...")
 
