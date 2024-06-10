@@ -1,26 +1,16 @@
 # Blackjack-Bot
 
-A Decentralized casino experience with a bot powered with AI-based decision making
-(Improvement on my previous personal project where I created a blackjack bot using java)
+Casino Royale is a decentralized casino experience where you play Blackjack against the house alongside with bots that are powered by AI-based decision making algorithms
 
-https://en.wikipedia.org/wiki/Blackjack
+Initial Blackjack & Bot Project: A previous personal project with Java, where I created a card counting bot
+inspired by the movie '21'.
 
-1- Gameplay (React JS frontend and Flask Python backend)
+Bots & Analysis: 6 different bots are powered by NN, RL, Decision trees and random forest are playing against the bot and trying to maximize their profits where the performances of each bot is compared based on the performance metric of generating 30% profit
 
-2- Smart Contracts (Solidity) for payment of money
+Backend - Frontend: A MVC structured, decentralized full-stack blackjack application where there is 6 bots and a player playing against
+the house and the monetary transactions are handled with smart contracts (Solidity)
 
-3- Simulation of profits for the bot
-
-4- Creation of multiple bots with pretrained model, my own AI program and the strategy from the movie '21'
-
-5- Real Game play with a bot, house and a player
-
-6- Idea: Retrain data or reinforcement learning? with the stats that I get from the bots
-
-NOTE: Separate the analysis and fullstack blcokchain part (Payments and Bets)
-
-Rules of the Game for this simulation:
-
+Rules of the Game for this simulation: (https://en.wikipedia.org/wiki/Blackjack)
 1- Played with 5 regular decks (52 cards each)
 2- One house and 4 players (3 bot and 1 actual player, you)
 3- Actions are hit, stay, double, split and surrender like a normal casino
@@ -29,5 +19,3 @@ Rules of the Game for this simulation:
 6- Insurance bets are not allowed. (Dealer (house) showing an Ace and taking insurance bets)
 7- House stays at/above 17
 8- Minimum bet is $10 for the game
-
-

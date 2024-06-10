@@ -1272,15 +1272,6 @@ def main():
             print_calculated_profits(house, bot1, bot2, bot3, bot4, bot5, bot6)
             print()
 
-            header = [calculate_profit_loss_percentage(10000, bot1.money), calculate_profit_loss_percentage(10000, bot2.money), calculate_profit_loss_percentage(10000, bot3.money), calculate_profit_loss_percentage(10000, bot4.money), calculate_profit_loss_percentage(10000, bot5.money), calculate_profit_loss_percentage(10000, bot6.money), calculate_profit_loss_percentage(1000000, house.money)]
-            generate_csv_dataset("Bots_Comparison.csv", header)
-            print("Generated data...")
-
-
+            
 if __name__ == "__main__":
-    
-    headers = ["Bot1", "Bot2","Bot3","Bot4","Bot5","Bot6","House"]
-    create_csv_dataset("Bots_Comparison.csv", headers)
-
-    for _ in range(100):
-        main()
+    main()
