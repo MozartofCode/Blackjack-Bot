@@ -19,10 +19,8 @@ def generate_csv_dataset(data_row, dataset_name):
 
 # This function creates the csv file that I'll populate later
 # Adds the headers to the file
-def create_csv_dataset():
-    filename = 'blackjack_dataset.csv'
-    headers = ['Player Hand', 'House Upcard', 'Count', 'Move', 'Bet']
-
+def create_csv_dataset(dataset_name, headers):
+    filename = dataset_name
     with open(filename, 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(headers)
@@ -1065,7 +1063,6 @@ def main():
     game_count = 300
     game = Game()
     
-    #create_csv_dataset()
 
     # Percentage of limit, if reached bot takes off
     # 30%
@@ -1268,13 +1265,22 @@ def main():
         house_playing(game, house, bot1_results, bot2_results, bot3_results, bot4_results, bot5_results, bot6_results)
 
         if game_count == 0:
-            print("Simulation finished after playing 1000 hands..." )
+            print("Simulation finished after playing 300 hands..." )
             print()
             print_player_money(house, bot1, bot2, bot3, bot4, bot5, bot6)    
             print()
             print_calculated_profits(house, bot1, bot2, bot3, bot4, bot5, bot6)
             print()
 
+            header = [bot1.money, bot2.money, bot3.money, bot4.money, bot5.money, bot6.money, house.money]
+            generate_csv_dataset("Bots_Comparison.csv", header)
+            print("Generated data...")
+
 
 if __name__ == "__main__":
-    main()
+    
+    headers = ["Bot1", "Bot2","Bot3","Bot4","Bot5","Bot6","House"]
+    create_csv_dataset("Bots_Comparison.csv", headers)
+
+    for _ in range(100):
+        main()
