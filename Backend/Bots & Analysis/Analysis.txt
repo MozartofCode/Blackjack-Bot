@@ -13,7 +13,8 @@ I calculated 100 different runs to get an accurate picture of the performance of
 I generated a .csv file to compare these performances and realized that the best performing bot out of all is Bot4 (random forest)
 that had >30% profit for 51 times out of the 100 runs. On the other hand, it should be noted that every single bot was ineffectively in
 a loss on average against the house (although again Bot4's loss was the smallest). I predict that the reason why this happened is because
-the bots need a better betting strategy and the models should have been trained with a lot more data to make them more accurate.
+the bots need a better betting strategy and the models should have been trained with a lot more data to make them more accurate. I am looking
+forward to improving my models and strategies while collaborating with other developers on this issue.
 
 Additionally, we can see that the decision tree/random forest based models performed better than the neural network based models while
 the worst bot is bot2 that has a 70% loss on average each run.
