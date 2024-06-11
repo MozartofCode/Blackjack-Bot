@@ -7,8 +7,12 @@ inspired by the movie '21'.
 
 Bots & Analysis: 6 different bots are powered by NN, RL, Decision trees and random forest are playing against the bot and trying to maximize their profits where the performances of each bot is compared based on the performance metric of generating 30% profit
 
-Backend - Frontend: A MVC structured, decentralized full-stack blackjack application where there is 6 bots and a player playing against
+Backend: A MVC structured, decentralized blackjack application where there is 6 bots and a player playing against
 the house and the monetary transactions are handled with smart contracts (Solidity)
+
+Frontend: React.js (JS) frontend, Images: https://opengameart.org/
+
+
 
 Rules of the Game for this simulation: (https://en.wikipedia.org/wiki/Blackjack)
 1- Played with 5 regular decks (52 cards each)
