@@ -4,14 +4,14 @@
 # For example: shuffling a deck, distributing cards...
 
 import random
-from House import House
-from Player import Player
-from Bots.Bot1 import Bot1 
-from Bots.Bot2 import Bot2
-from Bots.Bot3 import Bot3
-from Bots.Bot4 import Bot4
-from Bots.Bot5 import Bot5
-from Bots.Bot6 import Bot6
+from Bots.House import House
+from Bots.Player import Player
+from Bots.Bots.Bot1 import Bot1 
+from Bots.Bots.Bot2 import Bot2
+from Bots.Bots.Bot3 import Bot3
+from Bots.Bots.Bot4 import Bot4
+from Bots.Bots.Bot5 import Bot5
+from Bots.Bots.Bot6 import Bot6
 
 class Deck:
 
@@ -199,3 +199,16 @@ class Game:
             return 0
         else:
             return 1
+        
+    
+    def to_dict(self):
+        return {
+            'house': {
+                'score': self.house.calculate_hand_val(),
+                'cards': [str(card) for card in self.house.hand]
+            },
+            'players': {
+                'score': self.player.calculate_hand_val(),
+                'cards': [str(card) for card in self.player.hand]
+            } 
+        }

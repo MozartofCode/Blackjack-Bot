@@ -1,59 +1,56 @@
 # @Author: Bertan Berker
-# @Filename: Bot2.py
-# Bot2 is an AI bot that makes decisions and bettings based on a neural network and the .csv dataset
-# that I generated with the moves of bot1
+# @Filename: Bot6.py
+# This bot makes decisions based on reinforcement learning
 
-from AI_Models.NN import predict_move
-import math
-import pandas as pd
-import tensorflow as tf
+
+# Example usage:
+# predicted_move = predict_move(observation, q_table)
+# print(f"Predicted Move: {predicted_move}")
+# 1 hit, 0 stand
+
+from  Bots.AI_Models.Q_Learning import predict_move
 import os
+import math
+import numpy as np
 
-class Bot2:
+class Bot6:
     def __init__(self, money):
         self.money = money
         self.hand = []
-        self.hand2 = []
-
-        # Get the absolute path of the current script
         current_dir = os.path.dirname(os.path.abspath(__file__))
-
-        # Construct the path to the model file
-        model_path = os.path.join(current_dir, '../AI_Models/blackjack_model_bot2.h5')
-        df_path = os.path.join(current_dir, '../AI_Models/blackjack_dataset.csv')
+        q_table_path = os.path.join(current_dir, '../AI_Models/q_table_blackjack.npy')
+        self.q_table = np.load(q_table_path)
 
 
-        self.model = tf.keras.models.load_model(model_path)
-        self.df = pd.read_csv(df_path)
-
-
-    def play(self, player_hand, house_upcard, count, bet, is_initial):
-        if is_initial:
-            move = predict_move(player_hand, house_upcard, count, bet, self.model, self.df)
-            return move
-                
-        # Hits if < 17 as a bot if not initial hand
-        else:
-            if self.calculate_hand_val() < 17:
-                return "H"
-            else:
-                return "S"
-
-
-    def play_2(self, player_hand, house_upcard, count, bet, is_initial):
+    def play(self, player, house_upcard):
         
-        if is_initial:
-            move = predict_move(player_hand, house_upcard, count, bet, self.model, self.df)
-            return move
-                
-        # Hits if < 17 as a bot if not initial hand
+        # Getting the reusable ace from player
+        usable_Ace = 0
+        for card in player.hand:
+            if "Ace" in card:
+                usable_Ace = 1
+
+        house_upcard = house_upcard.split(" of ")[0]
+
+        # Processing and getting the value of the upcard of the house
+        if house_upcard == "Ace":
+            house_upcard = 1
+        elif house_upcard in ["King", "Queen", "Jack", "10"]:
+            house_upcard = 10
         else:
-            if self.calculate_hand_val_2() < 17:
-                return "H"
-            else:
-                return "S"
+            house_upcard = str(house_upcard)
 
+        observation = (player.calculate_hand_val(), int(house_upcard), usable_Ace)
+        move = predict_move(observation, self.q_table)
 
+        if move == 0:
+            return "S"
+        
+        elif move == 1:
+            return "H"
+    
+
+    
     # This function bets for bot2
     # :param game: the Game class
     # :return: the bet
@@ -110,7 +107,7 @@ class Bot2:
 
         elif count == 5:
             return 200
-
+        
         elif money < 500:
             return money
         
@@ -122,33 +119,18 @@ class Bot2:
         
         else:
             return 1000
-    
+
+
+
 
     # Hit move in blackjack, adds a card to the bot2's hand
     # :param card: card to add
     def hit(self, card):
         self.hand.append(card)
     
-    
-    # Same as Hit move but for adding a card to the bot2's hand2 (after split)
-    # :param card: card to add
-    def hit_2(self, card):
-        self.hand2.append(card)
-
-    
     # Stand move in blackjack
     def stand(self):
         return
-
-
-    # Double is implemented using hit in game
-    # Split is implemented using a combination of hit and gameplay file in game
-
-
-    # Surrender move in Blackjack where player gives up half of their bet
-    # :param bet: bot1's bet for that hand
-    def surrender(self, bet):
-        self.lose_money(bet//2)
         
     
     # This function is used for calculating the value of bot2's hand
@@ -157,37 +139,6 @@ class Bot2:
         aces = 0
         
         for card in self.hand:
-            val = card.split(" of ")[0]
-
-            if val in ["Jack", "Queen", "King"]:
-                value += 10
-            
-            elif val == "Ace":
-                # Add aces at the end for the proper value calculation
-                aces += 1
-
-            else:
-                value += int(val)
-            
-        while aces != 0:
-            # If adding Ace as 11 makes it > 21 than Ace is 1
-            if value + 11 > 21:
-                    value += 1
-            else:
-                value += 11
-
-            aces -= 1
-
-        return value 
-    
-    
-    # This function is used for calculating the value of bot2's hand2 (after splitting)
-    def calculate_hand_val_2(self):
-        
-        value = 0
-        aces = 0
-        
-        for card in self.hand2:
             val = card.split(" of ")[0]
 
             if val in ["Jack", "Queen", "King"]:
@@ -224,13 +175,14 @@ class Bot2:
         return self.calculate_hand_val() == 21
 
 
-    # Takes money from bot2's account (house won)
+    # Takes money from bot1's account (house won)
     # :param loss: House's loss 
     def lose_money(self, loss):
         self.money -= loss
     
 
-    # Give money to Bot2 (house lost)
+    # Give money to Bot1 (house lost)
     # :param gain: money gained from other player
     def gain_money(self, gain):
         self.money += gain
+    
