@@ -58,7 +58,7 @@ for episode in range(total_episodes):
     epsilon = max(min_epsilon, epsilon * epsilon_decay)
 
 # Save the trained Q-table for future use
-np.save('q_table_blackjack.npy', q_table)
+# np.save('q_table_blackjack.npy', q_table)
 
 # Function to make a move prediction based on the learned Q-table
 def predict_move(observation, q_table):
