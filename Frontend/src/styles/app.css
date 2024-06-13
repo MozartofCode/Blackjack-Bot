@@ -1,0 +1,36 @@
+/* styles.css or App.css - Styles for the overall layout */
+.app-container {
+    position: relative; 
+    background-image: url('../../Images/Table/table.png'); /* Path to your image */
+    background-size: cover; /* Adjust to cover the entire container */
+    background-repeat: no-repeat; /* Prevent image from repeating */
+    height: 100vh; /* Adjust height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.players-container {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    width: 80%; /* Adjust to your needs */
+}
+
+.player, .bot {
+    width: 120px; /* Example width for player/bot components */
+    margin-bottom: 10%; /* Adjust spacing between players */
+    margin-top: 50%;
+}
+
+.bots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px; 
+}

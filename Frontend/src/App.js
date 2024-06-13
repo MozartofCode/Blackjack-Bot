@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import './styles/app.css';
 import House from './components/House';
 import Bot1 from './components/Bot1';
 import Bot2 from './components/Bot2';
@@ -39,15 +39,20 @@ const App = () => {
   }, []);
 
   return (
-    <div className="app">
-      <House house={house} />
-      <Bot1 bot1={bot1} />
-      <Bot2 bot2={bot2} />
-      <Bot3 bot3={bot3} />
-      <Bot4 bot4={bot4} />
-      <Bot5 bot5={bot5} />
-      <Bot6 bot6={bot6} />
-      <Player player={player} />
+    <div className="app-container">    
+        <div className="players-container">
+          <Player player={player} />
+
+          <div className="bots">
+            <House house={house} />
+            <Bot1 bot1={bot1} />
+            <Bot2 bot2={bot2} />
+            <Bot3 bot3={bot3} />
+            <Bot4 bot4={bot4} />
+            <Bot5 bot5={bot5} />
+            <Bot6 bot6={bot6} />
+          </div>
+        </div>
     </div>
   );
 };

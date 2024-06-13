@@ -5,7 +5,6 @@ from Bots.game import bot3_playing
 from Bots.game import bot4_playing
 from Bots.game import bot5_playing
 from Bots.game import bot6_playing
-from Bots.game
 
 
 def get_game_state():
