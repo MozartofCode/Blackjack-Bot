@@ -1,18 +1,18 @@
 import React from 'react';
 import Card from './Card';
 
-const House = ({ house }) => {
+const Bot3 = ({ bot3 }) => {
   return (
     <div className="player">
-      <h2>House</h2>
+      <h2>Bot3</h2>
       <div className="cards">
-        {house.cards.map((card, index) => (
+        {bot3.cards.map((card, index) => (
           <Card key={index} card={card} />
         ))}
       </div>
-      <div className="Money">Money: {house.score}</div>
+      <div className="Money">Money: {bot3.money}</div>
     </div>
   );
 };
 
-export default House;
+export default Bot3;
