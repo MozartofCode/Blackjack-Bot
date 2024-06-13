@@ -5,7 +5,6 @@
 import math
 from Bots.Bots.Basic_Strategy import apply_basic_strategy, apply_basic_strategy_2
 
-
 class Bot1:
 
     # Initializes the Bot1 class with a specified amount of money
