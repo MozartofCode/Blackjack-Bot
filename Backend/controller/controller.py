@@ -5,6 +5,7 @@ from Bots.game import bot3_playing
 from Bots.game import bot4_playing
 from Bots.game import bot5_playing
 from Bots.game import bot6_playing
+from Bots.game
 
 
 def get_game_state():
@@ -37,3 +38,7 @@ def bot5_play():
 def bot6_play():
      bet = game_state.bot6.bet(game_state)
      bot6_playing(game_state.bot6, game_state.house, game_state, bet)
+
+def player_play(move):
+     if move == "H":
+          return

@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from controller.controller import get_game_state, bot1_play, bot2_play, bot3_play, bot4_play, bot5_play, bot6_play
+from controller.controller import get_game_state, bot1_play, bot2_play, bot3_play, bot4_play, bot5_play, bot6_play, player_play
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -38,6 +38,14 @@ def bot5_action():
 def bot6_action():
     bot6_play()
     return jsonify(get_game_state()), 200
+
+@app.route('/player-action', methods=['POST'])
+def player_action():
+    request_data = request.get_json()
+    move = request_data['action']
+    player_play(move)
+    return jsonify(get_game_state()), 200
+
 
 
 

@@ -1,10 +1,9 @@
 import React from 'react';
 import Card from './Card';
+import { handlePlayerAction } from './blackjackAPI';
 
-const Player = ({ player, onAction }) => {
-  const handleAction = (action) => {
-    onAction(player.id, action);
-  };
+const Player = ({ player }) => {
+  
 
   return (
     <div className="player">
@@ -15,11 +14,11 @@ const Player = ({ player, onAction }) => {
         ))}
       </div>
       <div className="score">Score: {player.score}</div>
-      <button onClick={() => handleAction('hit')}>Hit</button>
-      <button onClick={() => handleAction('stand')}>Stand</button>
-      <button onClick={() => handleAction('double')}>Double</button>
-      <button onClick={() => handleAction('split')}>Split</button>
-      <button onClick={() => handleAction('surrender')}>Surrender</button>
+      <button onClick={() => handlePlayerAction('H')}>Hit</button>
+      <button onClick={() => handlePlayerAction('S')}>Stand</button>
+      <button onClick={() => handlePlayerAction('D')}>Double</button>
+      <button onClick={() => handlePlayerAction('SP')}>Split</button>
+      <button onClick={() => handlePlayerAction('SU')}>Surrender</button>
     </div>
   );
 };
