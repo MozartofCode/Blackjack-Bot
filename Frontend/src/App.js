@@ -48,7 +48,6 @@ const App = () => {
       <Bot5 bot5={bot5} />
       <Bot6 bot6={bot6} />
       <Player player={player} />
-
     </div>
   );
 };

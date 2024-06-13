@@ -13,7 +13,8 @@ class Bot1:
     # hand is the main hand while hand2 is only used as a result of splitting
     def __init__(self, money):
         self.money = money
-        self.hand = []
+        #self.hand = []
+        self.hand = ["2 of Diamonds", "4 of Clubs"]
         self.hand2 = []
 
 

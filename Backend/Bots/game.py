@@ -3,7 +3,7 @@
 # This is a basic command line version of the game of blackjack where bots are playing against each other
 # And this program aims to compare their performances
 
-from gameplay import Game
+from Bots.gameplay import Game
 import csv
 
 # This function is used for generating data for the csv that will be used by bot2 (NN)
