@@ -1,12 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import'../styles/card.css'
+
 
 const Card = ({ card }) => {
-  const cardImage = require(`../../Images/Cards/${card}.png`).default;
+
+  const formatCardName = (cardName) => {
+    return cardName.replace(/\s/g, '_');  // Replace all spaces with underscores
+  };
+
+  const formattedCardName = formatCardName(card);
+  const cardImage = require(`../../Images/Cards/${formattedCardName}.png`);
+  
+  if (!cardImage) {
+    console.error(`Image not found for card: ${formattedCardName}`);
+    return null;
+  }
 
   return (
     <div className="card">
-      <img src={cardImage} alt={card} />
+      <img src={cardImage}/>
     </div>
   );
 };

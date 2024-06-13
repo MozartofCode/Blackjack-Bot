@@ -40,7 +40,6 @@ const App = () => {
 
   return (
     <div className="app">
-      
       <House house={house} />
       <Bot1 bot1={bot1} />
       <Bot2 bot2={bot2} />
