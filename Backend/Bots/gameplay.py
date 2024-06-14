@@ -209,30 +209,8 @@ class Game:
             },
             'player': {
                 'money': self.player.money,
-                'cards': [str(card) for card in self.player.hand]
-            },
-            'bot1': {
-                'money': self.bot1.money,
-                'cards': [str(card) for card in self.bot1.hand]
-            },
-            'bot2': {
-                'money': self.bot2.money,
-                'cards': [str(card) for card in self.bot2.hand]
-            },
-            'bot3': {
-                'money': self.bot3.money,
-                'cards': [str(card) for card in self.bot3.hand]
-            },
-            'bot4': {
-                'money': self.bot4.money,
-                'cards': [str(card) for card in self.bot4.hand]
-            },
-            'bot5': {
-                'money': self.bot5.money,
-                'cards': [str(card) for card in self.bot5.hand]
-            },
-            'bot6': {
-                'money': self.bot6.money,
-                'cards': [str(card) for card in self.bot6.hand]
+                'cards': [str(card) for card in self.player.hand],
+                'cards2': [str(card) for card in self.player.hand2],
             }
+
         }

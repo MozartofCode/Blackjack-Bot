@@ -5,7 +5,7 @@ import'../styles/card.css'
 const Card = ({ card }) => {
 
   const formatCardName = (cardName) => {
-    return cardName.replace(/\s/g, '_');  // Replace all spaces with underscores
+    return cardName.replace(/\s/g, '_');
   };
 
   const formattedCardName = formatCardName(card);
