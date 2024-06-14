@@ -34,7 +34,7 @@ export const handlePlayerBet = async (bet) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ bet }), 
+            body: JSON.stringify({bet}), 
         });
         if (!response.ok) {
             throw new Error(`Failed to perform player bet: ${bet}`);

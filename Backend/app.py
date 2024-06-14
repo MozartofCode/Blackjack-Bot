@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from controller.controller import get_game_state, player_play
+from controller.controller import get_game_state, player_play, player_betting
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -20,8 +20,9 @@ def player_action():
 @app.route('/player-bet', methods=['POST'])
 def player_bet():
     request_data = request.get_json()
+    print(request_data)
     bet = int(request_data['bet'])
-    player_bet(bet)
+    player_betting(bet)
     return jsonify(get_game_state()), 200
 
 

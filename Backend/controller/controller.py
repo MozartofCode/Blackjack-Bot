@@ -13,5 +13,6 @@ def player_play(move):
           print("Player is staying")
           return
 
-def player_bet(bet):
+def player_betting(bet):
+     print("Player is betting")
      game_state.player.bet(bet)
