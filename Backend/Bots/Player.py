@@ -13,6 +13,7 @@ class Player:
         self.hand = []
         self.hand2 = []
         self.the_bet = 0
+        self.in_game = True
 
 
     def bet(self, the_bet):

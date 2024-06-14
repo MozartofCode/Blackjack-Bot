@@ -12,7 +12,6 @@ const Player = ({ player }) => {
     const initializePlayer = async () => {
       const gameState = await fetchGameState();
       setPlayerData(gameState.player);
-      setBetAmount(gameState.bet)
     };
 
     initializePlayer();
@@ -30,8 +29,14 @@ const Player = ({ player }) => {
     setPlayerData(updatedGameState.player);
     setBetAmount(updatedGameState.bet)
   };
+  
+  useEffect(() => {
+    console.log("Player Data:", playerData);
+  }, [playerData]);
+
 
   return (
+    
     <div className="player-container">
       <h2>Player</h2>
       
@@ -51,12 +56,11 @@ const Player = ({ player }) => {
           onChange={(e) => setBetAmount(parseInt(e.target.value))} 
           placeholder="Enter bet amount" 
         />
-        <button onClick={() => handleBet(betAmount)}>Bet</button>
+        <button onClick={() => handleBet(betAmount)} disabled= {!playerData.player_in_game} >Bet</button>
       </div>
-
       <div className='button-container'>
-        <button onClick={() => handlePlayerAction('H')}>Hit</button>
-        <button onClick={() => handlePlayerAction('S')}>Stand</button>
+        <button  onClick={() => handlePlayerAction('H')} disabled= {!playerData.player_in_game}>Hit</button>
+        <button onClick={() => handlePlayerAction('S')} disabled= {!playerData.player_in_game}>Stand</button>
 
       </div>
       
