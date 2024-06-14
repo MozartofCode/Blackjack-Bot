@@ -17,6 +17,13 @@ def player_action():
     return jsonify(get_game_state()), 200
 
 
+@app.route('/player-bet', methods=['POST'])
+def player_bet():
+    request_data = request.get_json()
+    bet = int(request_data['bet'])
+    player_bet(bet)
+    return jsonify(get_game_state()), 200
+
 
 
 if __name__ == '__main__':

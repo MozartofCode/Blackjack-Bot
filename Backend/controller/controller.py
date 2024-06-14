@@ -5,4 +5,13 @@ def get_game_state():
 
 def player_play(move):
      if move == "H":
+          game_state.deal_single_card("player")
+          print("Player hit")
+          print("Player's cards: " + str(game_state.player.hand))
+     
+     elif move == "S":
+          print("Player is staying")
           return
+
+def player_bet(bet):
+     game_state.player.bet(bet)

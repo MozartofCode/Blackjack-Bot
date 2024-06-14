@@ -29,6 +29,15 @@
     color: #fff; /* Optional: Change color if desired */
 }
 
+.bet  {
+    margin-top: 10px; /* Adjust margin as needed */
+    font-size: 24px; /* Set the font size to make it larger */
+    font-weight: bold; /* Make the text bold */
+    color: #fff; /* Optional: Change color if desired */
+}
+
+
+
 /* Player.css - Styles for the player's area */
 .button-container {
     display: flex; /* Use flexbox to align items */

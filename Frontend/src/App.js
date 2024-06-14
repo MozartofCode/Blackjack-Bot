@@ -7,7 +7,7 @@ import { fetchGameState } from './components/blackjackAPI';
 
 const App = () => {
   const [house, setHouse] = useState({ money: 0, cards: [] });
-  const [player, setPlayer] = useState({ money: 0, cards: [], cards2: [] });
+  const [player, setPlayer] = useState({ money: 0, cards: [] });
   
  
   useEffect(() => {

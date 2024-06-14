@@ -12,6 +12,12 @@ class Player:
         self.money = money
         self.hand = []
         self.hand2 = []
+        self.the_bet = 0
+
+
+    def bet(self, the_bet):
+        self.money -= the_bet
+        self.the_bet = the_bet
 
 
     # Hit move in blackjack, adds a card to the player's hand

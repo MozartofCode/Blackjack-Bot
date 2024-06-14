@@ -7,7 +7,7 @@ export const fetchGameState = async () => {
   return data;
 };
 
-export const handlePlayerAction = async (action) => {
+export const playerAction = async (action) => {
     try {
         const response = await fetch(`${API_BASE_URL}/player-action`, {
             method: 'POST',
@@ -23,5 +23,25 @@ export const handlePlayerAction = async (action) => {
         return data
     } catch (error) {
         console.error(`Error performing player action ${action}:`, error);
+    }
+};
+
+
+export const handlePlayerBet = async (bet) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/player-bet`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ bet }), 
+        });
+        if (!response.ok) {
+            throw new Error(`Failed to perform player bet: ${bet}`);
+        }
+        const data = await response.json();
+        return data
+    } catch (error) {
+        console.error(`Error performing player bet ${bet}:`, error);
     }
 };
