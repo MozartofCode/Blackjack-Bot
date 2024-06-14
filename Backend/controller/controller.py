@@ -12,10 +12,16 @@ def player_play(move):
      elif move == "S":
           game_state.player.in_game = False
 
-          print("Print player.in_game=FALSE")
-          print(game_state.player.in_game)
           return
 
 def player_betting(bet):
      print("Player is betting")
      game_state.player.bet(bet)
+
+
+def house_betting(bet):
+     print("House is betting")
+     game_state.house.bet(bet)
+
+def house_play():
+     game_state.house.play(game_state.player, game_state)

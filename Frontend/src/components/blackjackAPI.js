@@ -45,3 +45,42 @@ export const handlePlayerBet = async (bet) => {
         console.error(`Error performing player bet ${bet}:`, error);
     }
 };
+
+
+export const houseAction = async () => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/house-action`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            } 
+        });
+        if (!response.ok) {
+            throw new Error("Failed to perform house action");
+        }
+        const data = await response.json();
+        return data
+    } catch (error) {
+        console.error(`Error performing house action: `, error);
+    }
+};
+
+
+export const handleHouseBetting = async (bet) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/house-bet`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({bet}), 
+        });
+        if (!response.ok) {
+            throw new Error(`Failed to perform house bet: ${bet}`);
+        }
+        const data = await response.json();
+        return data
+    } catch (error) {
+        console.error(`Error performing house bet ${bet}:`, error);
+    }
+};

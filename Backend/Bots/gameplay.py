@@ -205,7 +205,9 @@ class Game:
         return {
             'house': {
                 'money': self.house.money,
-                'cards': [str(card) for card in self.house.hand]
+                'cards': [str(card) for card in self.house.hand],
+                'bet': self.player.the_bet,
+                'player_in_game': self.player.in_game
             },
             'player': {
                 'money': self.player.money,

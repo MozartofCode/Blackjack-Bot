@@ -5,6 +5,7 @@ import { playerAction, handlePlayerBet, fetchGameState } from './blackjackAPI';
 import { useState, useEffect } from 'react';
 
 const Player = ({ player }) => {
+  
   const [playerData, setPlayerData] = useState(player);
   const [betAmount, setBetAmount] = useState(0);
   
@@ -30,11 +31,6 @@ const Player = ({ player }) => {
     setBetAmount(updatedGameState.bet)
   };
   
-  useEffect(() => {
-    console.log("Player Data:", playerData);
-  }, [playerData]);
-
-
   return (
     
     <div className="player-container">
