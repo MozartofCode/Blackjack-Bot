@@ -24,11 +24,14 @@ const App = () => {
     <div className="app-container">    
         <div className="players-container">
           <Player player={player} />
+        </div>
 
+        <div className="house-container">
           <div className="bots">
             <House house={house} />
           </div>
         </div>
+        
     </div>
   );
 };

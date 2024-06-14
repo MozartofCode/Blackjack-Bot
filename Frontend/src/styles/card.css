@@ -1,19 +1,20 @@
 /* src/components/Card.css */
 .card {
-    width: 100px; /* Set the width of the card */
-    height: 150px; /* Set the height of the card */
-    overflow: hidden; /* Hide any overflow */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: center; /* Center align horizontally */
-    align-items: center; /* Center align vertically */
-    border: 1px solid #ccc; /* Optional: Add a border */
-    border-radius: 8px; /* Optional: Add rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow */
-    margin: 5px; /* Optional: Add margin around the card */
-  }
+  width: 100px; /* Set the width of the card */
+  height: 150px; /* Set the height of the card */
+  overflow: hidden; /* Hide any overflow */
+  display: flex; /* Use flexbox for alignment */
+  justify-content: center; /* Center align horizontally */
+  align-items: center; /* Center align vertically */
+  border: 1px solid #ccc; /* Optional: Add a border */
+  border-radius: 8px; /* Optional: Add rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow */
+  margin: 5px; /* Optional: Add margin around the card */
+}
+
   
-  .card img {
-    width: 100%; /* Make the image fill the width of the card */
-    height: auto; /* Maintain the aspect ratio */
-  }
-  
+  /* Card.css - Styles for each card */
+.card img {
+  width: 100%; /* Set the image to take the full width of the card */
+  height: auto; /* Maintain aspect ratio */
+}

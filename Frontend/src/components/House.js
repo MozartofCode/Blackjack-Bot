@@ -1,16 +1,17 @@
 import React from 'react';
 import Card from './Card';
+import '../styles/house.css'
 
 const House = ({ house }) => {
   return (
-    <div className="player">
+    <div className="player-container">
       <h2>House</h2>
-      <div className="cards">
+      <div className="cards-container">
         {house.cards.map((card, index) => (
           <Card key={index} card={card} />
         ))}
       </div>
-      <div className="Money">Money: {house.score}</div>
+      <div className="money">Money: ${house.money}</div>
     </div>
   );
 };

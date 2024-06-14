@@ -1,0 +1,29 @@
+/* Player.css - Styles for the player's area */
+.player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px; /* Adjust margin as needed */
+    color: #fff;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: row; /* Set the direction to row for horizontal alignment */
+    justify-content: center; /* Center the cards horizontally */
+    align-items: center; /* Center the cards vertically */
+}
+
+.card {
+    width: 100px; /* Set desired width */
+    height: 150px; /* Set desired height */
+    margin: 0 10px; /* Adjust margin between cards */
+}
+
+/* Additional styling for the money display */
+.money {
+    margin-top: 10px; /* Adjust margin as needed */
+    font-size: 24px; /* Set the font size to make it larger */
+    font-weight: bold; /* Make the text bold */
+    color: #fff; /* Optional: Change color if desired */
+}
