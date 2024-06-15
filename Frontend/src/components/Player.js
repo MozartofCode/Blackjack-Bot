@@ -36,6 +36,10 @@ useEffect(() => {
     setBetAmount(updatedGameState.bet)
   };
   
+  if (playerData.money <= 0) {
+    return <div className="game-over">Game Over</div>;
+  }
+
   return (
     
     <div className="player-container">
@@ -43,7 +47,7 @@ useEffect(() => {
       
       <div className="cards-container">
         {playerData.cards.map((card, index) => (
-          inPlay ? (
+          playerData.bet  > 0 ? (
             <Card key={index} card={card} />
           ) : null
         ))}

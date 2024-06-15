@@ -31,3 +31,14 @@
     align-items: flex-end;
     width: 80%; 
 }
+
+
+.game-over {
+    font-size: 2em; /* Adjust the size as needed */
+    background-color: white;
+    color: black; /* Assuming you want black text on a white background */
+    text-align: center;
+    padding: 20px; /* Adjust padding as needed */
+    border: 1px solid black; /* Optional: add a border */
+    border-radius: 5px; /* Optional: add rounded corners */
+}
