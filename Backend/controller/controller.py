@@ -20,6 +20,7 @@ def player_play(move):
 def player_betting(bet):
      print("Player is betting")
      game_state.player.bet(bet)
+     game_state.house.bet(bet)
 
 
 def house_betting(bet):
@@ -29,7 +30,7 @@ def house_betting(bet):
 def house_play():
      game_state.house.play(game_state)
      game_state.house.in_game = False
-
+     print(game_state.to_dict())
 
 def initialize_new_round():
      game_state.player.the_bet = 0

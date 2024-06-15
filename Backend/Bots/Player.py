@@ -17,7 +17,6 @@ class Player:
 
 
     def bet(self, the_bet):
-        self.money -= the_bet
         self.the_bet = the_bet
 
 

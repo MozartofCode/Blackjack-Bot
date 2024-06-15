@@ -8,6 +8,7 @@ const Player = ({ player }) => {
   
   const [playerData, setPlayerData] = useState(player);
   const [betAmount, setBetAmount] = useState(0);
+  const [inPlay, setInPlay] = useState(false);
 
 useEffect(() => {
   const interval = setInterval(async () => {
@@ -28,6 +29,7 @@ useEffect(() => {
   };
 
   const handleBet = async (betAmount) => {
+    setInPlay(true);
     await handlePlayerBet(betAmount);
     const updatedGameState = await fetchGameState();
     setPlayerData(updatedGameState.player);
@@ -41,12 +43,15 @@ useEffect(() => {
       
       <div className="cards-container">
         {playerData.cards.map((card, index) => (
-          <Card key={index} card={card} />
+          inPlay ? (
+            <Card key={index} card={card} />
+          ) : null
         ))}
       </div>
 
+
       <div className="money">Money: ${playerData.money}</div>
-      <div className="bet">Bet: ${playerData.bet}</div>
+      <div className="bet">Pot: ${playerData.bet * 2}</div>
       
       <div className="bet">
         <input 
