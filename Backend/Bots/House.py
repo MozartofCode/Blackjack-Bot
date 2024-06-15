@@ -26,38 +26,36 @@ class House:
 
     # ONLY USED FOR FULLSTACK PLAYER VS BOT
 
-    def play(self, player, game):
+    def play(self, game):
 
-        print("HOUSE IS PLAYINGGGG...")
-
-        if player.calculate_hand_val() > 21:
-            self.money += (self.the_bet * 2)
+        if game.player.calculate_hand_val() > 21:
+            game.house.money += (game.house.the_bet * 2)
         
-        elif player.calculate_hand_val() == 21:
-            player.money += ((self.the_bet * 3) // 2)
-            self.money -= (self.the_bet // 2)
+        elif game.player.calculate_hand_val() == 21:
+            game.player.money += ((game.house.the_bet * 3) // 2)
+            game.house.money -= (game.house.the_bet // 2)
         
         else:
-            if self.calculate_hand_val() > player.calculate_hand_val():
-                self.money += (self.the_bet * 2)
+            if game.house.calculate_hand_val() > game.player.calculate_hand_val():
+                game.house.money += (game.house.the_bet * 2)
             
-            elif self.calculate_hand_val() == player.calculate_hand_val():
-                self.money += self.the_bet
-                player.money += self.the_bet
+            elif game.house.calculate_hand_val() == game.player.calculate_hand_val():
+                game.house.money += game.house.the_bet
+                game.player.money += game.house.the_bet
             
             else:
-                while self.calculate_hand_val() < 17 and self.calculate_hand_val() < player.calculate_hand_val():
-                    self.hit(game.deal_single_card("house"))
+                while game.house.calculate_hand_val() < 17 and game.house.calculate_hand_val() < game.player.calculate_hand_val():
+                    game.deal_single_card("house") 
 
-                if self.calculate_hand_val() > 21 or self.calculate_hand_val() < player.calculate_hand_val():
-                    player.money += (self.the_bet * 2)
+                if game.house.calculate_hand_val() > 21 or game.house.calculate_hand_val() < game.player.calculate_hand_val():
+                    game.player.money += (game.house.the_bet * 2)
                 
-                elif self.calculate_hand_val() == player.calculate_hand_val():
-                    self.money += self.the_bet
-                    player.money += self.the_bet
+                elif game.house.calculate_hand_val() == game.player.calculate_hand_val():
+                    game.house.money += game.house.the_bet
+                    game.player.money += game.house.the_bet
                 
-                elif self.calculate_hand_val() > player.calculate_hand_val():
-                    self.money += (self.the_bet * 2)
+                elif game.house.calculate_hand_val() > game.player.calculate_hand_val():
+                    game.house.money += (game.house.the_bet * 2)
                 
 
 

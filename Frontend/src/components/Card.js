@@ -8,6 +8,8 @@ const Card = ({ card }) => {
     return cardName.replace(/\s/g, '_');
   };
 
+  console.log(formatCardName(card))
+
   const formattedCardName = formatCardName(card);
   const cardImage = require(`../../Images/Cards/${formattedCardName}.png`);
   
