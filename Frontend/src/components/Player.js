@@ -8,15 +8,18 @@ const Player = ({ player }) => {
   
   const [playerData, setPlayerData] = useState(player);
   const [betAmount, setBetAmount] = useState(0);
-  
-  useEffect(() => {
-    const initializePlayer = async () => {
-      const gameState = await fetchGameState();
-      setPlayerData(gameState.player);
-    };
 
-    initializePlayer();
-},[]);
+useEffect(() => {
+  const interval = setInterval(async () => {
+    const gameState = await fetchGameState();
+    setPlayerData(gameState.player);
+    console.log(gameState.player)
+
+  }, 1000); // Fetch game state every 1 seconds
+
+  return () => clearInterval(interval);
+}, []);
+
 
   const handlePlayerAction = async (action) => {
     await playerAction(action);

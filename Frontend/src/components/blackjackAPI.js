@@ -7,6 +7,28 @@ export const fetchGameState = async () => {
   return data;
 };
 
+export const initializeNewRound = async () => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/initialize-round`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            } 
+        });
+        if (!response.ok) {
+            throw new Error("Failed to initialize a new round");
+        }
+        const data = await response.json();
+        return data
+    } catch (error) {
+        console.error(`Error initializing a new round: `, error);
+    }
+}
+
+
+
+
+
 export const playerAction = async (action) => {
     try {
         const response = await fetch(`${API_BASE_URL}/player-action`, {

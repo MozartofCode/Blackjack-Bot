@@ -11,6 +11,7 @@ class House:
         self.money = money
         self.hand = []
         self.the_bet = 0
+        self.in_game = True
     
 
     # This is used for initializing or clearing the hand of the house
@@ -26,6 +27,9 @@ class House:
     # ONLY USED FOR FULLSTACK PLAYER VS BOT
 
     def play(self, player, game):
+
+        print("HOUSE IS PLAYINGGGG...")
+
         if player.calculate_hand_val() > 21:
             self.money += (self.the_bet * 2)
         

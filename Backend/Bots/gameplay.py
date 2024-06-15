@@ -206,8 +206,9 @@ class Game:
             'house': {
                 'money': self.house.money,
                 'cards': [str(card) for card in self.house.hand],
-                'bet': self.player.the_bet,
-                'player_in_game': self.player.in_game
+                'bet': self.house.the_bet,
+                'player_in_game': self.player.in_game,
+                'house_in_game': self.house.in_game,
             },
             'player': {
                 'money': self.player.money,
