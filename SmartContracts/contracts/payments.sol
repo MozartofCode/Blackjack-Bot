@@ -30,7 +30,7 @@ contract Payments {
     }
 
     function subPlayer(uint256 _money) public {
-        player_balance += _money;
+        player_balance -= _money;
     }
 
     function getHouseBalance() public view returns (uint256) {
