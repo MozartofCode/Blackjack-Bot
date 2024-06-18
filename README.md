@@ -8,7 +8,8 @@ inspired by the movie '21'.
 Bots & Analysis: 6 different bots are powered by NN, RL, Decision trees and random forest are playing against the bot and trying to maximize their profits where the performances of each bot is compared based on the performance metric of generating 30% profit
 
 Backend: A MVC structured, decentralized blackjack application where there is a player playing against
-the house and the monetary transactions are handled with smart contracts (Solidity)
+the house and the monetary transactions are handled with smart contracts in Solidity. (Developed with the truffle framework and 
+deployed an a test blockchain using Ganache)
 
 Frontend: React.js (JS) frontend, Images: https://opengameart.org/
 
