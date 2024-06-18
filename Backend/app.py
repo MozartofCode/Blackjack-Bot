@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from controller.controller import get_game_state, player_play, player_betting, house_betting, house_play, initialize_new_round
+from controller.controller import get_game_state, player_play, player_betting, house_betting, house_play, initialize_new_round, get_smart_contract
 from flask_cors import CORS
 
 app = Flask(__name__)
