@@ -10,7 +10,6 @@ class House:
     def __init__(self, money):
         self.money = money
         self.hand = []
-        self.the_bet = 0
         self.in_game = True
     
 
@@ -18,50 +17,6 @@ class House:
     # At the beginning of each play     
     def init_hand(self):
         self.hand = []
-
-    def bet(self, the_bet):
-        self.the_bet = the_bet
-
-
-    # ONLY USED FOR FULLSTACK PLAYER VS BOT
-
-    def play(self, game):
-
-        if game.player.calculate_hand_val() > 21:
-            game.house.money += (game.house.the_bet)
-            game.player.money -= (game.house.the_bet)
-        
-        elif game.player.calculate_hand_val() == 21:
-            game.player.money += ((game.house.the_bet * 3) // 2)
-            game.house.money -= ((game.house.the_bet * 3) // 2)
-        
-        else:
-            if game.house.calculate_hand_val() > game.player.calculate_hand_val():
-                game.house.money += (game.house.the_bet)
-                game.player.money -= (game.house.the_bet)
-            
-            elif game.house.calculate_hand_val() == game.player.calculate_hand_val():
-                game.house.money += 0
-                game.player.money += 0
-            
-            else:
-                while game.house.calculate_hand_val() < 17 and game.house.calculate_hand_val() < game.player.calculate_hand_val():
-                    game.deal_single_card("house") 
-
-                if game.house.calculate_hand_val() > 21 or game.house.calculate_hand_val() < game.player.calculate_hand_val():
-                    game.player.money += (game.house.the_bet)
-                    game.house.money -= (game.house.the_bet)
-                
-                elif game.house.calculate_hand_val() == game.player.calculate_hand_val():
-                    game.house.money += game.house.the_bet
-                    game.player.money += game.house.the_bet
-                
-                elif game.house.calculate_hand_val() > game.player.calculate_hand_val():
-                    game.house.money += (game.house.the_bet)
-                    game.player.money -= (game.house.the_bet)
-                
-       
-
 
 
     # Hit move in blackjack, adds a card to the House's hand

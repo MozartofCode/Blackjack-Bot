@@ -199,21 +199,3 @@ class Game:
             return 0
         else:
             return 1
-        
-    
-    def to_dict(self):
-        return {
-            'house': {
-                'money': self.house.money,
-                'cards': [str(card) for card in self.house.hand],
-                'bet': self.house.the_bet,
-                'player_in_game': self.player.in_game,
-                'house_in_game': self.house.in_game,
-            },
-            'player': {
-                'money': self.player.money,
-                'bet': self.player.the_bet,
-                'cards': [str(card) for card in self.player.hand],
-                'player_in_game': self.player.in_game
-            }
-        }

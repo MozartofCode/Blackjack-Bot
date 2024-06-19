@@ -16,10 +16,6 @@ class Player:
         self.in_game = True
 
 
-    def bet(self, the_bet):
-        self.the_bet = the_bet
-
-
     # Hit move in blackjack, adds a card to the player's hand
     # :param card: card to add
     def hit(self, card):
