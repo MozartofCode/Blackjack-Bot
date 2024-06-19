@@ -17,16 +17,10 @@ class Player:
     # Initializes the Player class with a specified amount of money
     # :param money: the amount of money that player has
     # hand is the main hand while hand2 is only used as a result of splitting
-    def __init__(self, money):
-        self.money = money
+    def __init__(self, contract):
+        self.contract = contract
         self.hand = []
-        self.hand2 = []
-        self.the_bet = 0
         self.in_game = True
-
-
-    def bet(self, the_bet):
-        self.the_bet = the_bet
 
 
     # Hit move in blackjack, adds a card to the player's hand
@@ -34,26 +28,10 @@ class Player:
     def hit(self, card):
         self.hand.append(card)
     
-    
-    # Same as Hit move but for adding a card to the player's hand2 (after split)
-    # :param card: card to add
-    def hit_2(self, card):
-        self.hand2.append(card)
 
-    
     # Stand move in blackjack
     def stand(self):
         return
-
-
-    # Double is implemented using hit in game
-    # Split is implemented using a combination of hit and gameplay file in game
-
-
-    # Surrender move in Blackjack where player gives up half of their bet
-    # :param bet: bot1's bet for that hand
-    def surrender(self, bet):
-        self.lose_money(bet//2)
         
     
     # This function is used for calculating the value of player's hand
@@ -86,37 +64,6 @@ class Player:
         return value 
     
     
-    # This function is used for calculating the value of player's hand2 (after splitting)
-    def calculate_hand_val_2(self):
-        
-        value = 0
-        aces = 0
-        
-        for card in self.hand2:
-            val = card.split(" of ")[0]
-
-            if val in ["Jack", "Queen", "King"]:
-                value += 10
-            
-            elif val == "Ace":
-                # Add aces at the end for the proper value calculation
-                aces += 1
-
-            else:
-                value += int(val)
-            
-        while aces != 0:
-            # If adding Ace as 11 makes it > 21 than Ace is 1
-            if value + 11 > 21:
-                    value += 1
-            else:
-                value += 11
-
-            aces -= 1
-
-        return value 
-    
-
     # Checks if the value of player's hand is over 21 in which case it loses
     def is_over_21(self):
         if self.calculate_hand_val() > 21:
@@ -129,84 +76,51 @@ class Player:
         return self.calculate_hand_val() == 21
 
 
-    # Takes money from player's account (house won)
-    # :param loss: House's loss 
-    def lose_money(self, loss):
-        self.money -= loss
-    
-
-    # Give money to player (house lost)
-    # :param gain: money gained from other player
-    def gain_money(self, gain):
-        self.money += gain
-
-
-
-
-
-
-
-
-
 class House:
 
     # Initializes the House class with a specified amount of money
     # :param money: the amount of money that house has
-    def __init__(self, money):
-        self.money = money
+    def __init__(self, contract):
+        self.contract = contract
         self.hand = []
-        self.the_bet = 0
         self.in_game = True
     
 
-    # This is used for initializing or clearing the hand of the house
-    # At the beginning of each play     
-    def init_hand(self):
-        self.hand = []
-
-    def bet(self, the_bet):
-        self.the_bet = the_bet
-
-
-    # ONLY USED FOR FULLSTACK PLAYER VS BOT
-
     def play(self, game):
 
-        if game.player.calculate_hand_val() > 21:
-            game.house.money += (game.house.the_bet)
-            game.player.money -= (game.house.the_bet)
+        if game.player.calculate_hand_val() > 21:            
+            self.contract.add_to_house(self.contract.get_bet())
+            self.contract.sub_from_player(self.contract.get_bet())
         
         elif game.player.calculate_hand_val() == 21:
-            game.player.money += ((game.house.the_bet * 3) // 2)
-            game.house.money -= ((game.house.the_bet * 3) // 2)
+            self.contract.add_to_player((self.contract.get_bet() * 3) // 2)
+            self.contract.sub_from_house((self.contract.get_bet() * 3) // 2)
         
         else:
-            if game.house.calculate_hand_val() > game.player.calculate_hand_val():
-                game.house.money += (game.house.the_bet)
-                game.player.money -= (game.house.the_bet)
+            if game.house.calculate_hand_val() > game.player.calculate_hand_val():    
+                self.contract.add_to_house(self.contract.get_bet())
+                self.contract.sub_from_player(self.contract.get_bet())
             
             elif game.house.calculate_hand_val() == game.player.calculate_hand_val():
-                game.house.money += 0
-                game.player.money += 0
+                self.contract.add_to_house(0)
+                self.contract.add_to_player(0)
             
             else:
                 while game.house.calculate_hand_val() < 17 and game.house.calculate_hand_val() < game.player.calculate_hand_val():
                     game.deal_single_card("house") 
 
-                if game.house.calculate_hand_val() > 21 or game.house.calculate_hand_val() < game.player.calculate_hand_val():
-                    game.player.money += (game.house.the_bet)
-                    game.house.money -= (game.house.the_bet)
+                if game.house.calculate_hand_val() > 21 or game.house.calculate_hand_val() < game.player.calculate_hand_val():        
+                    self.contract.sub_from_house(self.contract.get_bet())
+                    self.contract.add_to_player(self.contract.get_bet())
                 
                 elif game.house.calculate_hand_val() == game.player.calculate_hand_val():
-                    game.house.money += game.house.the_bet
-                    game.player.money += game.house.the_bet
+                    self.contract.add_to_house(0)
+                    self.contract.add_to_player(0)
                 
                 elif game.house.calculate_hand_val() > game.player.calculate_hand_val():
-                    game.house.money += (game.house.the_bet)
-                    game.player.money -= (game.house.the_bet)
-                
-       
-
+                    self.contract.add_to_house(self.contract.get_bet())
+                    self.contract.sub_from_player(self.contract.get_bet())
+                    
 
 
     # Hit move in blackjack, adds a card to the House's hand
@@ -257,37 +171,6 @@ class House:
         return False                
 
 
-    # Takes money from houses account (player won)
-    # :param loss: House's loss 
-    def lose_money(self, loss):
-        self.money -= loss
-    
-
-    # Give money to House (player lost)
-    # :param gain: money gained from other player
-    def gain_money(self, gain):
-        self.money += gain
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class Deck:
 
     # Initializing 5 decks of cards (5 x 52 cards)
@@ -330,15 +213,13 @@ class Game:
 
     # Initializes the players, money and deck for the game
     def __init__(self):
-        house_money = 1000000
-        player_money = 10000
 
+        self.contract = Smart_Contract()
         self.deck = Deck()
         self.deck.shuffle()
-        # self.table_money = 0
-
-        self.house = House(house_money)
-        self.player = Player(player_money)
+        
+        self.house = House(self.contract)
+        self.player = Player(self.contract)
 
     # Checks if enough cards are left in the deck and shuffles if not
     # 40 minimum is a random number since 8 players if each plan to get 5 cards
@@ -358,7 +239,6 @@ class Game:
             self.house.hit(self.deck.deal_card())
             self.player.hit(self.deck.deal_card())
             
-    
 
     # Deals a single card to a specific player (Hit)
     # :param player_name: name of the player to give the card to
@@ -376,15 +256,15 @@ class Game:
     def to_dict(self):
         return {
             'house': {
-                'money': self.house.money,
+                'money': self.contract.get_house_balance(),
                 'cards': [str(card) for card in self.house.hand],
-                'bet': self.house.the_bet,
+                'bet': self.contract.get_bet(),
                 'player_in_game': self.player.in_game,
                 'house_in_game': self.house.in_game,
             },
             'player': {
-                'money': self.player.money,
-                'bet': self.player.the_bet,
+                'money': self.contract.get_player_balance(),
+                'bet': self.contract.get_bet(),
                 'cards': [str(card) for card in self.player.hand],
                 'player_in_game': self.player.in_game
             }

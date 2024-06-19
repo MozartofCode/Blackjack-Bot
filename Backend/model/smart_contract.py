@@ -85,3 +85,29 @@ class Smart_Contract:
         self.player_balance = self.contract.functions.getPlayerBalance().call()
         print(f"Updated Player Balance: {self.player_balance}")
 
+    def add_bet(self, amount):
+        account = self.web3.eth.accounts[0]
+        transaction = self.contract.functions.addBet(amount).buildTransaction({
+            'from': account,
+            'nonce': self.web3.eth.getTransactionCount(account)
+        })
+        signed_tx = self.web3.eth.account.signTransaction(transaction, private_key='0xYourPrivateKey')
+        tx_hash = self.web3.eth.sendRawTransaction(signed_tx.rawTransaction)
+        receipt = self.web3.eth.waitForTransactionReceipt(tx_hash)
+        self.player_bet = self.contract.functions.getPlayerBet().call()
+        print(f"Updated Player Bet: {self.player_bet}")
+
+    def zero_bet(self):
+        account = self.web3.eth.accounts[0]
+        transaction = self.contract.functions.zeroBet().buildTransaction({
+            'from': account,
+            'nonce': self.web3.eth.getTransactionCount(account)
+        })
+        signed_tx = self.web3.eth.account.signTransaction(transaction, private_key='0xYourPrivateKey')
+        tx_hash = self.web3.eth.sendRawTransaction(signed_tx.rawTransaction)
+        receipt = self.web3.eth.waitForTransactionReceipt(tx_hash)
+        self.player_bet = self.contract.functions.getBet().call()
+        print(f"Player Bet Reset: {self.player_bet}")
+
+    def get_bet(self):
+        return self.contract.functions.getBet().call()
