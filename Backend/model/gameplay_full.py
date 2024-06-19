@@ -2,12 +2,6 @@
 # @ Filename: gameplay_full.py
 # This file has the gameplay fnuctions for the decentralized full-stack application
 
-
-# @Author: Bertan Berker
-# @File: gameplay.py 
-# This file contains the basic functionality for the gameplay 
-# For example: shuffling a deck, distributing cards...
-
 import random
 from .smart_contract import Smart_Contract
 
