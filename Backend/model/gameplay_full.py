@@ -9,7 +9,7 @@
 # For example: shuffling a deck, distributing cards...
 
 import random
-from smart_contract import Smart_Contract
+from .smart_contract import Smart_Contract
 
 
 class Player:
@@ -215,6 +215,10 @@ class Game:
     def __init__(self):
 
         self.contract = Smart_Contract()
+        
+        if (self.contract.get_player_balance() <= 0):
+            self.contract.add_to_player(10000)
+
         self.deck = Deck()
         self.deck.shuffle()
         
@@ -244,7 +248,6 @@ class Game:
     # :param player_name: name of the player to give the card to
     def deal_single_card(self, player_name):
         self.cards_left_check()
-        self.card_count += self.count_card(self.deck.peek_card())
 
         if player_name == "house":
             self.house.hit(self.deck.deal_card())

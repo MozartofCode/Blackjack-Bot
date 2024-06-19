@@ -25,6 +25,39 @@
           "type": "uint256"
         }
       ],
+      "name": "addBet",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "zeroBet",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getBet",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_money",
+          "type": "uint256"
+        }
+      ],
       "name": "addHouse",
       "outputs": [],
       "stateMutability": "nonpayable",
@@ -96,9 +129,9 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.2+commit.661d1103\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_house\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_player\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_money\",\"type\":\"uint256\"}],\"name\":\"addHouse\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_money\",\"type\":\"uint256\"}],\"name\":\"addPlayer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getHouseBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPlayerBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_money\",\"type\":\"uint256\"}],\"name\":\"subHouse\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_money\",\"type\":\"uint256\"}],\"name\":\"subPlayer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Payments.sol\":\"Payments\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Payments.sol\":{\"keccak256\":\"0x14f6c763c01f4387982c0fd8ad2d76fbfd26be880c32f01c5e67d3c11a249f5c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://38f6efda0791b473b90a415d3298f8be3251615df9075d720e1de2357f240789\",\"dweb:/ipfs/QmNR2m7QxLoMdkKoUsVT5sRxuxPhUCu9xBseqebnHquhem\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b506040516103d43803806103d48339818101604052810190610032919061005c565b816000819055508060018190555050506100b9565b600081519050610056816100a2565b92915050565b6000806040838503121561006f57600080fd5b600061007d85828601610047565b925050602061008e85828601610047565b9150509250929050565b6000819050919050565b6100ab81610098565b81146100b657600080fd5b50565b61030c806100c86000396000f3fe608060405234801561001057600080fd5b50600436106100625760003560e01c806305a8d569146100675780630b01517c146100855780630c5dfa80146100a3578063ec4a8b17146100bf578063f49af50a146100db578063f732ece3146100f7575b600080fd5b61006f610113565b60405161007c91906101e1565b60405180910390f35b61008d61011c565b60405161009a91906101e1565b60405180910390f35b6100bd60048036038101906100b891906101a9565b610126565b005b6100d960048036038101906100d491906101a9565b610141565b005b6100f560048036038101906100f091906101a9565b61015d565b005b610111600480360381019061010c91906101a9565b610179565b005b60008054905090565b6000600154905090565b806000808282546101379190610252565b9250508190555050565b806001600082825461015391906101fc565b9250508190555050565b806001600082825461016f9190610252565b9250508190555050565b8060008082825461018a91906101fc565b9250508190555050565b6000813590506101a3816102bf565b92915050565b6000602082840312156101bb57600080fd5b60006101c984828501610194565b91505092915050565b6101db81610286565b82525050565b60006020820190506101f660008301846101d2565b92915050565b600061020782610286565b915061021283610286565b9250827fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0382111561024757610246610290565b5b828201905092915050565b600061025d82610286565b915061026883610286565b92508282101561027b5761027a610290565b5b828203905092915050565b6000819050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b6102c881610286565b81146102d357600080fd5b5056fea264697066735822122091e64d052a1cc39c113e738c497efd3ef46a3075d52e4c4a728e08e72507c42264736f6c63430008020033",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100625760003560e01c806305a8d569146100675780630b01517c146100855780630c5dfa80146100a3578063ec4a8b17146100bf578063f49af50a146100db578063f732ece3146100f7575b600080fd5b61006f610113565b60405161007c91906101e1565b60405180910390f35b61008d61011c565b60405161009a91906101e1565b60405180910390f35b6100bd60048036038101906100b891906101a9565b610126565b005b6100d960048036038101906100d491906101a9565b610141565b005b6100f560048036038101906100f091906101a9565b61015d565b005b610111600480360381019061010c91906101a9565b610179565b005b60008054905090565b6000600154905090565b806000808282546101379190610252565b9250508190555050565b806001600082825461015391906101fc565b9250508190555050565b806001600082825461016f9190610252565b9250508190555050565b8060008082825461018a91906101fc565b9250508190555050565b6000813590506101a3816102bf565b92915050565b6000602082840312156101bb57600080fd5b60006101c984828501610194565b91505092915050565b6101db81610286565b82525050565b60006020820190506101f660008301846101d2565b92915050565b600061020782610286565b915061021283610286565b9250827fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0382111561024757610246610290565b5b828201905092915050565b600061025d82610286565b915061026883610286565b92508282101561027b5761027a610290565b5b828203905092915050565b6000819050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b6102c881610286565b81146102d357600080fd5b5056fea264697066735822122091e64d052a1cc39c113e738c497efd3ef46a3075d52e4c4a728e08e72507c42264736f6c63430008020033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.2+commit.661d1103\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_house\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_player\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_money\",\"type\":\"uint256\"}],\"name\":\"addBet\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_money\",\"type\":\"uint256\"}],\"name\":\"addHouse\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_money\",\"type\":\"uint256\"}],\"name\":\"addPlayer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBet\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getHouseBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPlayerBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_money\",\"type\":\"uint256\"}],\"name\":\"subHouse\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_money\",\"type\":\"uint256\"}],\"name\":\"subPlayer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"zeroBet\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Payments.sol\":\"Payments\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Payments.sol\":{\"keccak256\":\"0xc709cfcc57825e0390d7e100d5df741903bdc5b355dc14883e94599e5ab04356\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d15b8bc449efc3798856987ca809de416400e7628282903b95fd34823b63a964\",\"dweb:/ipfs/QmbttBCoshSKjdZhbKYat2XMRB3Rg8pd3jkwjgwNXmYEV1\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506040516104793803806104798339818101604052810190610032919061005c565b816000819055508060018190555050506100b9565b600081519050610056816100a2565b92915050565b6000806040838503121561006f57600080fd5b600061007d85828601610047565b925050602061008e85828601610047565b9150509250929050565b6000819050919050565b6100ab81610098565b81146100b657600080fd5b50565b6103b1806100c86000396000f3fe608060405234801561001057600080fd5b50600436106100935760003560e01c8063cdaba78611610066578063cdaba7861461010e578063ec4a8b171461012a578063f49af50a14610146578063f732ece314610162578063fbf51bef1461017e57610093565b806305a8d569146100985780630b01517c146100b65780630c5dfa80146100d457806320835e8c146100f0575b600080fd5b6100a0610188565b6040516100ad9190610286565b60405180910390f35b6100be610191565b6040516100cb9190610286565b60405180910390f35b6100ee60048036038101906100e9919061024e565b61019b565b005b6100f86101b6565b6040516101059190610286565b60405180910390f35b6101286004803603810190610123919061024e565b6101c0565b005b610144600480360381019061013f919061024e565b6101dc565b005b610160600480360381019061015b919061024e565b6101f8565b005b61017c6004803603810190610177919061024e565b610214565b005b61018661022f565b005b60008054905090565b6000600154905090565b806000808282546101ac91906102f7565b9250508190555050565b6000600254905090565b80600260008282546101d291906102a1565b9250508190555050565b80600160008282546101ee91906102a1565b9250508190555050565b806001600082825461020a91906102f7565b9250508190555050565b8060008082825461022591906102a1565b9250508190555050565b6000600281905550565b60008135905061024881610364565b92915050565b60006020828403121561026057600080fd5b600061026e84828501610239565b91505092915050565b6102808161032b565b82525050565b600060208201905061029b6000830184610277565b92915050565b60006102ac8261032b565b91506102b78361032b565b9250827fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff038211156102ec576102eb610335565b5b828201905092915050565b60006103028261032b565b915061030d8361032b565b9250828210156103205761031f610335565b5b828203905092915050565b6000819050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b61036d8161032b565b811461037857600080fd5b5056fea2646970667358221220592ac7c9b6664b48d6b22c24c4efe3dd02bc15ee71a77b8e265b7e923c78270264736f6c63430008020033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100935760003560e01c8063cdaba78611610066578063cdaba7861461010e578063ec4a8b171461012a578063f49af50a14610146578063f732ece314610162578063fbf51bef1461017e57610093565b806305a8d569146100985780630b01517c146100b65780630c5dfa80146100d457806320835e8c146100f0575b600080fd5b6100a0610188565b6040516100ad9190610286565b60405180910390f35b6100be610191565b6040516100cb9190610286565b60405180910390f35b6100ee60048036038101906100e9919061024e565b61019b565b005b6100f86101b6565b6040516101059190610286565b60405180910390f35b6101286004803603810190610123919061024e565b6101c0565b005b610144600480360381019061013f919061024e565b6101dc565b005b610160600480360381019061015b919061024e565b6101f8565b005b61017c6004803603810190610177919061024e565b610214565b005b61018661022f565b005b60008054905090565b6000600154905090565b806000808282546101ac91906102f7565b9250508190555050565b6000600254905090565b80600260008282546101d291906102a1565b9250508190555050565b80600160008282546101ee91906102a1565b9250508190555050565b806001600082825461020a91906102f7565b9250508190555050565b8060008082825461022591906102a1565b9250508190555050565b6000600281905550565b60008135905061024881610364565b92915050565b60006020828403121561026057600080fd5b600061026e84828501610239565b91505092915050565b6102808161032b565b82525050565b600060208201905061029b6000830184610277565b92915050565b60006102ac8261032b565b91506102b78361032b565b9250827fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff038211156102ec576102eb610335565b5b828201905092915050565b60006103028261032b565b915061030d8361032b565b9250828210156103205761031f610335565b5b828203905092915050565b6000819050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b61036d8161032b565b811461037857600080fd5b5056fea2646970667358221220592ac7c9b6664b48d6b22c24c4efe3dd02bc15ee71a77b8e265b7e923c78270264736f6c63430008020033",
   "immutableReferences": {},
   "generatedSources": [
     {
@@ -1638,18 +1671,18 @@
       "name": "#utility.yul"
     }
   ],
-  "sourceMap": "201:792:0:-:0;;;287:123;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;359:6;343:13;:22;;;;393:7;376:14;:24;;;;287:123;;201:792;;7:143:1;;95:6;89:13;80:22;;111:33;138:5;111:33;:::i;:::-;70:80;;;;:::o;156:440::-;;;292:2;280:9;271:7;267:23;263:32;260:2;;;308:1;305;298:12;260:2;351:1;376:64;432:7;423:6;412:9;408:22;376:64;:::i;:::-;366:74;;322:128;489:2;515:64;571:7;562:6;551:9;547:22;515:64;:::i;:::-;505:74;;460:129;250:346;;;;;:::o;602:77::-;;668:5;657:16;;647:32;;;:::o;685:122::-;758:24;776:5;758:24;:::i;:::-;751:5;748:35;738:2;;797:1;794;787:12;738:2;728:79;:::o;201:792:0:-;;;;;;;",
-  "deployedSourceMap": "201:792:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;786:96;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;890:98;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;602:83;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;509:85;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;693;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;418:83;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;786:96;834:7;861:13;;854:20;;786:96;:::o;890:98::-;939:7;966:14;;959:21;;890:98;:::o;602:83::-;671:6;654:13;;:23;;;;;;;:::i;:::-;;;;;;;;602:83;:::o;509:85::-;580:6;562:14;;:24;;;;;;;:::i;:::-;;;;;;;;509:85;:::o;693:::-;764:6;746:14;;:24;;;;;;;:::i;:::-;;;;;;;;693:85;:::o;418:83::-;487:6;470:13;;:23;;;;;;;:::i;:::-;;;;;;;;418:83;:::o;7:139:1:-;;91:6;78:20;69:29;;107:33;134:5;107:33;:::i;:::-;59:87;;;;:::o;152:262::-;;260:2;248:9;239:7;235:23;231:32;228:2;;;276:1;273;266:12;228:2;319:1;344:53;389:7;380:6;369:9;365:22;344:53;:::i;:::-;334:63;;290:117;218:196;;;;:::o;420:118::-;507:24;525:5;507:24;:::i;:::-;502:3;495:37;485:53;;:::o;544:222::-;;675:2;664:9;660:18;652:26;;688:71;756:1;745:9;741:17;732:6;688:71;:::i;:::-;642:124;;;;:::o;772:305::-;;831:20;849:1;831:20;:::i;:::-;826:25;;865:20;883:1;865:20;:::i;:::-;860:25;;1019:1;951:66;947:74;944:1;941:81;938:2;;;1025:18;;:::i;:::-;938:2;1069:1;1066;1062:9;1055:16;;816:261;;;;:::o;1083:191::-;;1143:20;1161:1;1143:20;:::i;:::-;1138:25;;1177:20;1195:1;1177:20;:::i;:::-;1172:25;;1216:1;1213;1210:8;1207:2;;;1221:18;;:::i;:::-;1207:2;1266:1;1263;1259:9;1251:17;;1128:146;;;;:::o;1280:77::-;;1346:5;1335:16;;1325:32;;;:::o;1363:180::-;1411:77;1408:1;1401:88;1508:4;1505:1;1498:15;1532:4;1529:1;1522:15;1549:122;1622:24;1640:5;1622:24;:::i;:::-;1615:5;1612:35;1602:2;;1661:1;1658;1651:12;1602:2;1592:79;:::o",
-  "source": "// SPDX-License-Identifier: MIT\r\n// @Author: Bertan Berker\r\n// @File: payments.sol\r\n// This is a smart contract that handles the payments between the player and the house\r\n\r\npragma solidity ^0.8.2;\r\n\r\ncontract Payments {\r\n\r\n    uint256 house_balance;\r\n    uint256 player_balance;\r\n\r\n    constructor(uint256 _house, uint256 _player) {\r\n        house_balance = _house;\r\n        player_balance = _player;\r\n\r\n    }\r\n\r\n    function addHouse(uint256 _money) public {\r\n        house_balance += _money;\r\n    }\r\n\r\n    function addPlayer(uint256 _money) public {\r\n        player_balance += _money;\r\n    }\r\n\r\n    function subHouse(uint256 _money) public {\r\n        house_balance -= _money;\r\n    }\r\n\r\n    function subPlayer(uint256 _money) public {\r\n        player_balance -= _money;\r\n    }\r\n\r\n    function getHouseBalance() public view returns (uint256) {\r\n        return house_balance;\r\n    }\r\n\r\n    function getPlayerBalance() public view returns (uint256) {\r\n        return player_balance;\r\n    }\r\n\r\n}",
+  "sourceMap": "201:1062:0:-:0;;;312:123;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;384:6;368:13;:22;;;;418:7;401:14;:24;;;;312:123;;201:1062;;7:143:1;;95:6;89:13;80:22;;111:33;138:5;111:33;:::i;:::-;70:80;;;;:::o;156:440::-;;;292:2;280:9;271:7;267:23;263:32;260:2;;;308:1;305;298:12;260:2;351:1;376:64;432:7;423:6;412:9;408:22;376:64;:::i;:::-;366:74;;322:128;489:2;515:64;571:7;562:6;551:9;547:22;515:64;:::i;:::-;505:74;;460:129;250:346;;;;;:::o;602:77::-;;668:5;657:16;;647:32;;;:::o;685:122::-;758:24;776:5;758:24;:::i;:::-;751:5;748:35;738:2;;797:1;794;787:12;738:2;728:79;:::o;201:1062:0:-;;;;;;;",
+  "deployedSourceMap": "201:1062:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1056:96;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;1160:98;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;872:83;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;596:84;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;443:78;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;779:85;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;963;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;688:83;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;529:59;;;:::i;:::-;;1056:96;1104:7;1131:13;;1124:20;;1056:96;:::o;1160:98::-;1209:7;1236:14;;1229:21;;1160:98;:::o;872:83::-;941:6;924:13;;:23;;;;;;;:::i;:::-;;;;;;;;872:83;:::o;596:84::-;635:7;662:10;;655:17;;596:84;:::o;443:78::-;507:6;493:10;;:20;;;;;;;:::i;:::-;;;;;;;;443:78;:::o;779:85::-;850:6;832:14;;:24;;;;;;;:::i;:::-;;;;;;;;779:85;:::o;963:::-;1034:6;1016:14;;:24;;;;;;;:::i;:::-;;;;;;;;963:85;:::o;688:83::-;757:6;740:13;;:23;;;;;;;:::i;:::-;;;;;;;;688:83;:::o;529:59::-;579:1;566:10;:14;;;;529:59::o;7:139:1:-;;91:6;78:20;69:29;;107:33;134:5;107:33;:::i;:::-;59:87;;;;:::o;152:262::-;;260:2;248:9;239:7;235:23;231:32;228:2;;;276:1;273;266:12;228:2;319:1;344:53;389:7;380:6;369:9;365:22;344:53;:::i;:::-;334:63;;290:117;218:196;;;;:::o;420:118::-;507:24;525:5;507:24;:::i;:::-;502:3;495:37;485:53;;:::o;544:222::-;;675:2;664:9;660:18;652:26;;688:71;756:1;745:9;741:17;732:6;688:71;:::i;:::-;642:124;;;;:::o;772:305::-;;831:20;849:1;831:20;:::i;:::-;826:25;;865:20;883:1;865:20;:::i;:::-;860:25;;1019:1;951:66;947:74;944:1;941:81;938:2;;;1025:18;;:::i;:::-;938:2;1069:1;1066;1062:9;1055:16;;816:261;;;;:::o;1083:191::-;;1143:20;1161:1;1143:20;:::i;:::-;1138:25;;1177:20;1195:1;1177:20;:::i;:::-;1172:25;;1216:1;1213;1210:8;1207:2;;;1221:18;;:::i;:::-;1207:2;1266:1;1263;1259:9;1251:17;;1128:146;;;;:::o;1280:77::-;;1346:5;1335:16;;1325:32;;;:::o;1363:180::-;1411:77;1408:1;1401:88;1508:4;1505:1;1498:15;1532:4;1529:1;1522:15;1549:122;1622:24;1640:5;1622:24;:::i;:::-;1615:5;1612:35;1602:2;;1661:1;1658;1651:12;1602:2;1592:79;:::o",
+  "source": "// SPDX-License-Identifier: MIT\r\n// @Author: Bertan Berker\r\n// @File: payments.sol\r\n// This is a smart contract that handles the payments between the player and the house\r\n\r\npragma solidity ^0.8.2;\r\n\r\ncontract Payments {\r\n\r\n    uint256 house_balance;\r\n    uint256 player_balance;\r\n    uint256 player_bet;\r\n\r\n    constructor(uint256 _house, uint256 _player) {\r\n        house_balance = _house;\r\n        player_balance = _player;\r\n\r\n    }\r\n\r\n    function addBet(uint256 _money) public {\r\n        player_bet += _money;\r\n    }\r\n\r\n    function zeroBet() public {\r\n        player_bet = 0;\r\n    }\r\n\r\n    function getBet() public view returns (uint256) {\r\n        return player_bet;\r\n    }\r\n\r\n    function addHouse(uint256 _money) public {\r\n        house_balance += _money;\r\n    }\r\n\r\n    function addPlayer(uint256 _money) public {\r\n        player_balance += _money;\r\n    }\r\n\r\n    function subHouse(uint256 _money) public {\r\n        house_balance -= _money;\r\n    }\r\n\r\n    function subPlayer(uint256 _money) public {\r\n        player_balance -= _money;\r\n    }\r\n\r\n    function getHouseBalance() public view returns (uint256) {\r\n        return house_balance;\r\n    }\r\n\r\n    function getPlayerBalance() public view returns (uint256) {\r\n        return player_balance;\r\n    }\r\n\r\n}",
   "sourcePath": "C:\\Users\\berta\\Desktop\\Blackjack-Bot\\SmartContracts\\contracts\\Payments.sol",
   "ast": {
     "absolutePath": "project:/contracts/Payments.sol",
     "exportedSymbols": {
       "Payments": [
-        78
+        106
       ]
     },
-    "id": 79,
+    "id": 107,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
@@ -1670,9 +1703,9 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 78,
+        "id": 106,
         "linearizedBaseContracts": [
-          78
+          106
         ],
         "name": "Payments",
         "nameLocation": "210:8:0",
@@ -1685,7 +1718,7 @@
             "name": "house_balance",
             "nameLocation": "236:13:0",
             "nodeType": "VariableDeclaration",
-            "scope": 78,
+            "scope": 106,
             "src": "228:21:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1712,7 +1745,7 @@
             "name": "player_balance",
             "nameLocation": "264:14:0",
             "nodeType": "VariableDeclaration",
-            "scope": 78,
+            "scope": 106,
             "src": "256:22:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1733,25 +1766,52 @@
             "visibility": "internal"
           },
           {
+            "constant": false,
+            "id": 7,
+            "mutability": "mutable",
+            "name": "player_bet",
+            "nameLocation": "293:10:0",
+            "nodeType": "VariableDeclaration",
+            "scope": 106,
+            "src": "285:18:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 6,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "285:7:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
             "body": {
-              "id": 20,
+              "id": 22,
               "nodeType": "Block",
-              "src": "332:78:0",
+              "src": "357:78:0",
               "statements": [
                 {
                   "expression": {
-                    "id": 14,
+                    "id": 16,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 12,
+                      "id": 14,
                       "name": "house_balance",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 3,
-                      "src": "343:13:0",
+                      "src": "368:13:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -1760,41 +1820,41 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 13,
+                      "id": 15,
                       "name": "_house",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 7,
-                      "src": "359:6:0",
+                      "referencedDeclaration": 9,
+                      "src": "384:6:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "343:22:0",
+                    "src": "368:22:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 15,
+                  "id": 17,
                   "nodeType": "ExpressionStatement",
-                  "src": "343:22:0"
+                  "src": "368:22:0"
                 },
                 {
                   "expression": {
-                    "id": 18,
+                    "id": 20,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 16,
+                      "id": 18,
                       "name": "player_balance",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 5,
-                      "src": "376:14:0",
+                      "src": "401:14:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -1803,30 +1863,30 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 17,
+                      "id": 19,
                       "name": "_player",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 9,
-                      "src": "393:7:0",
+                      "referencedDeclaration": 11,
+                      "src": "418:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "376:24:0",
+                    "src": "401:24:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 19,
+                  "id": 21,
                   "nodeType": "ExpressionStatement",
-                  "src": "376:24:0"
+                  "src": "401:24:0"
                 }
               ]
             },
-            "id": 21,
+            "id": 23,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
@@ -1834,45 +1894,18 @@
             "nameLocation": "-1:-1:-1",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 10,
+              "id": 12,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7,
-                  "mutability": "mutable",
-                  "name": "_house",
-                  "nameLocation": "307:6:0",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 21,
-                  "src": "299:14:0",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 6,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "299:7:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
                   "id": 9,
                   "mutability": "mutable",
-                  "name": "_player",
-                  "nameLocation": "323:7:0",
+                  "name": "_house",
+                  "nameLocation": "332:6:0",
                   "nodeType": "VariableDeclaration",
-                  "scope": 21,
-                  "src": "315:15:0",
+                  "scope": 23,
+                  "src": "324:14:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1883,7 +1916,34 @@
                     "id": 8,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "315:7:0",
+                    "src": "324:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11,
+                  "mutability": "mutable",
+                  "name": "_player",
+                  "nameLocation": "348:7:0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23,
+                  "src": "340:15:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "340:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1892,40 +1952,40 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "298:33:0"
+              "src": "323:33:0"
             },
             "returnParameters": {
-              "id": 11,
+              "id": 13,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "332:0:0"
+              "src": "357:0:0"
             },
-            "scope": 78,
-            "src": "287:123:0",
+            "scope": 106,
+            "src": "312:123:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 30,
+              "id": 32,
               "nodeType": "Block",
-              "src": "459:42:0",
+              "src": "482:39:0",
               "statements": [
                 {
                   "expression": {
-                    "id": 28,
+                    "id": 30,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 26,
-                      "name": "house_balance",
+                      "id": 28,
+                      "name": "player_bet",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3,
-                      "src": "470:13:0",
+                      "referencedDeclaration": 7,
+                      "src": "493:10:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -1934,50 +1994,50 @@
                     "nodeType": "Assignment",
                     "operator": "+=",
                     "rightHandSide": {
-                      "id": 27,
+                      "id": 29,
                       "name": "_money",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 23,
-                      "src": "487:6:0",
+                      "referencedDeclaration": 25,
+                      "src": "507:6:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "470:23:0",
+                    "src": "493:20:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 29,
+                  "id": 31,
                   "nodeType": "ExpressionStatement",
-                  "src": "470:23:0"
+                  "src": "493:20:0"
                 }
               ]
             },
-            "functionSelector": "f732ece3",
-            "id": 31,
+            "functionSelector": "cdaba786",
+            "id": 33,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
-            "name": "addHouse",
-            "nameLocation": "427:8:0",
+            "name": "addBet",
+            "nameLocation": "452:6:0",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 24,
+              "id": 26,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 23,
+                  "id": 25,
                   "mutability": "mutable",
                   "name": "_money",
-                  "nameLocation": "444:6:0",
+                  "nameLocation": "467:6:0",
                   "nodeType": "VariableDeclaration",
-                  "scope": 31,
-                  "src": "436:14:0",
+                  "scope": 33,
+                  "src": "459:14:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1985,10 +2045,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 22,
+                    "id": 24,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "436:7:0",
+                    "src": "459:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1997,16 +2057,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "435:16:0"
+              "src": "458:16:0"
             },
             "returnParameters": {
-              "id": 25,
+              "id": 27,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "459:0:0"
+              "src": "482:0:0"
             },
-            "scope": 78,
-            "src": "418:83:0",
+            "scope": 106,
+            "src": "443:78:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
@@ -2015,7 +2075,7 @@
             "body": {
               "id": 40,
               "nodeType": "Block",
-              "src": "551:43:0",
+              "src": "555:33:0",
               "statements": [
                 {
                   "expression": {
@@ -2026,11 +2086,172 @@
                     "lValueRequested": false,
                     "leftHandSide": {
                       "id": 36,
-                      "name": "player_balance",
+                      "name": "player_bet",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5,
-                      "src": "562:14:0",
+                      "referencedDeclaration": 7,
+                      "src": "566:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "hexValue": "30",
+                      "id": 37,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "579:1:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "src": "566:14:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 39,
+                  "nodeType": "ExpressionStatement",
+                  "src": "566:14:0"
+                }
+              ]
+            },
+            "functionSelector": "fbf51bef",
+            "id": 41,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "zeroBet",
+            "nameLocation": "538:7:0",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 34,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "545:2:0"
+            },
+            "returnParameters": {
+              "id": 35,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "555:0:0"
+            },
+            "scope": 106,
+            "src": "529:59:0",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 48,
+              "nodeType": "Block",
+              "src": "644:36:0",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 46,
+                    "name": "player_bet",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 7,
+                    "src": "662:10:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 45,
+                  "id": 47,
+                  "nodeType": "Return",
+                  "src": "655:17:0"
+                }
+              ]
+            },
+            "functionSelector": "20835e8c",
+            "id": 49,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getBet",
+            "nameLocation": "605:6:0",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 42,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "611:2:0"
+            },
+            "returnParameters": {
+              "id": 45,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 44,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 49,
+                  "src": "635:7:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 43,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "635:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "634:9:0"
+            },
+            "scope": 106,
+            "src": "596:84:0",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 58,
+              "nodeType": "Block",
+              "src": "729:42:0",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 56,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 54,
+                      "name": "house_balance",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3,
+                      "src": "740:13:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -2039,50 +2260,50 @@
                     "nodeType": "Assignment",
                     "operator": "+=",
                     "rightHandSide": {
-                      "id": 37,
+                      "id": 55,
                       "name": "_money",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 33,
-                      "src": "580:6:0",
+                      "referencedDeclaration": 51,
+                      "src": "757:6:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "562:24:0",
+                    "src": "740:23:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 39,
+                  "id": 57,
                   "nodeType": "ExpressionStatement",
-                  "src": "562:24:0"
+                  "src": "740:23:0"
                 }
               ]
             },
-            "functionSelector": "ec4a8b17",
-            "id": 41,
+            "functionSelector": "f732ece3",
+            "id": 59,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
-            "name": "addPlayer",
-            "nameLocation": "518:9:0",
+            "name": "addHouse",
+            "nameLocation": "697:8:0",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 34,
+              "id": 52,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 33,
+                  "id": 51,
                   "mutability": "mutable",
                   "name": "_money",
-                  "nameLocation": "536:6:0",
+                  "nameLocation": "714:6:0",
                   "nodeType": "VariableDeclaration",
-                  "scope": 41,
-                  "src": "528:14:0",
+                  "scope": 59,
+                  "src": "706:14:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2090,10 +2311,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 32,
+                    "id": 50,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "528:7:0",
+                    "src": "706:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2102,226 +2323,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "527:16:0"
+              "src": "705:16:0"
             },
             "returnParameters": {
-              "id": 35,
+              "id": 53,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "551:0:0"
+              "src": "729:0:0"
             },
-            "scope": 78,
-            "src": "509:85:0",
-            "stateMutability": "nonpayable",
-            "virtual": false,
-            "visibility": "public"
-          },
-          {
-            "body": {
-              "id": 50,
-              "nodeType": "Block",
-              "src": "643:42:0",
-              "statements": [
-                {
-                  "expression": {
-                    "id": 48,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "id": 46,
-                      "name": "house_balance",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 3,
-                      "src": "654:13:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_uint256",
-                        "typeString": "uint256"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "-=",
-                    "rightHandSide": {
-                      "id": 47,
-                      "name": "_money",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 43,
-                      "src": "671:6:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_uint256",
-                        "typeString": "uint256"
-                      }
-                    },
-                    "src": "654:23:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "id": 49,
-                  "nodeType": "ExpressionStatement",
-                  "src": "654:23:0"
-                }
-              ]
-            },
-            "functionSelector": "0c5dfa80",
-            "id": 51,
-            "implemented": true,
-            "kind": "function",
-            "modifiers": [],
-            "name": "subHouse",
-            "nameLocation": "611:8:0",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 44,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 43,
-                  "mutability": "mutable",
-                  "name": "_money",
-                  "nameLocation": "628:6:0",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 51,
-                  "src": "620:14:0",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 42,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "620:7:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "619:16:0"
-            },
-            "returnParameters": {
-              "id": 45,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "643:0:0"
-            },
-            "scope": 78,
-            "src": "602:83:0",
-            "stateMutability": "nonpayable",
-            "virtual": false,
-            "visibility": "public"
-          },
-          {
-            "body": {
-              "id": 60,
-              "nodeType": "Block",
-              "src": "735:43:0",
-              "statements": [
-                {
-                  "expression": {
-                    "id": 58,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "id": 56,
-                      "name": "player_balance",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 5,
-                      "src": "746:14:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_uint256",
-                        "typeString": "uint256"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "-=",
-                    "rightHandSide": {
-                      "id": 57,
-                      "name": "_money",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 53,
-                      "src": "764:6:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_uint256",
-                        "typeString": "uint256"
-                      }
-                    },
-                    "src": "746:24:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "id": 59,
-                  "nodeType": "ExpressionStatement",
-                  "src": "746:24:0"
-                }
-              ]
-            },
-            "functionSelector": "f49af50a",
-            "id": 61,
-            "implemented": true,
-            "kind": "function",
-            "modifiers": [],
-            "name": "subPlayer",
-            "nameLocation": "702:9:0",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 54,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 53,
-                  "mutability": "mutable",
-                  "name": "_money",
-                  "nameLocation": "720:6:0",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 61,
-                  "src": "712:14:0",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 52,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "712:7:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "711:16:0"
-            },
-            "returnParameters": {
-              "id": 55,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "735:0:0"
-            },
-            "scope": 78,
-            "src": "693:85:0",
+            "scope": 106,
+            "src": "688:83:0",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
@@ -2330,55 +2341,74 @@
             "body": {
               "id": 68,
               "nodeType": "Block",
-              "src": "843:39:0",
+              "src": "821:43:0",
               "statements": [
                 {
                   "expression": {
                     "id": 66,
-                    "name": "house_balance",
-                    "nodeType": "Identifier",
-                    "overloadedDeclarations": [],
-                    "referencedDeclaration": 3,
-                    "src": "861:13:0",
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 64,
+                      "name": "player_balance",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5,
+                      "src": "832:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "+=",
+                    "rightHandSide": {
+                      "id": 65,
+                      "name": "_money",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 61,
+                      "src": "850:6:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "832:24:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 65,
                   "id": 67,
-                  "nodeType": "Return",
-                  "src": "854:20:0"
+                  "nodeType": "ExpressionStatement",
+                  "src": "832:24:0"
                 }
               ]
             },
-            "functionSelector": "05a8d569",
+            "functionSelector": "ec4a8b17",
             "id": 69,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
-            "name": "getHouseBalance",
-            "nameLocation": "795:15:0",
+            "name": "addPlayer",
+            "nameLocation": "788:9:0",
             "nodeType": "FunctionDefinition",
             "parameters": {
               "id": 62,
               "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "810:2:0"
-            },
-            "returnParameters": {
-              "id": 65,
-              "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 64,
+                  "id": 61,
                   "mutability": "mutable",
-                  "name": "",
-                  "nameLocation": "-1:-1:-1",
+                  "name": "_money",
+                  "nameLocation": "806:6:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 69,
-                  "src": "834:7:0",
+                  "src": "798:14:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2386,10 +2416,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 63,
+                    "id": 60,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "834:7:0",
+                    "src": "798:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2398,67 +2428,363 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "833:9:0"
+              "src": "797:16:0"
             },
-            "scope": 78,
-            "src": "786:96:0",
+            "returnParameters": {
+              "id": 63,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "821:0:0"
+            },
+            "scope": 106,
+            "src": "779:85:0",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 78,
+              "nodeType": "Block",
+              "src": "913:42:0",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 76,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 74,
+                      "name": "house_balance",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3,
+                      "src": "924:13:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "-=",
+                    "rightHandSide": {
+                      "id": 75,
+                      "name": "_money",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 71,
+                      "src": "941:6:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "924:23:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 77,
+                  "nodeType": "ExpressionStatement",
+                  "src": "924:23:0"
+                }
+              ]
+            },
+            "functionSelector": "0c5dfa80",
+            "id": 79,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "subHouse",
+            "nameLocation": "881:8:0",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 72,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 71,
+                  "mutability": "mutable",
+                  "name": "_money",
+                  "nameLocation": "898:6:0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 79,
+                  "src": "890:14:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 70,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "890:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "889:16:0"
+            },
+            "returnParameters": {
+              "id": 73,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "913:0:0"
+            },
+            "scope": 106,
+            "src": "872:83:0",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 88,
+              "nodeType": "Block",
+              "src": "1005:43:0",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 86,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 84,
+                      "name": "player_balance",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5,
+                      "src": "1016:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "-=",
+                    "rightHandSide": {
+                      "id": 85,
+                      "name": "_money",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 81,
+                      "src": "1034:6:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1016:24:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 87,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1016:24:0"
+                }
+              ]
+            },
+            "functionSelector": "f49af50a",
+            "id": 89,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "subPlayer",
+            "nameLocation": "972:9:0",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 82,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 81,
+                  "mutability": "mutable",
+                  "name": "_money",
+                  "nameLocation": "990:6:0",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 89,
+                  "src": "982:14:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 80,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "982:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "981:16:0"
+            },
+            "returnParameters": {
+              "id": 83,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1005:0:0"
+            },
+            "scope": 106,
+            "src": "963:85:0",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 96,
+              "nodeType": "Block",
+              "src": "1113:39:0",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 94,
+                    "name": "house_balance",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 3,
+                    "src": "1131:13:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 93,
+                  "id": 95,
+                  "nodeType": "Return",
+                  "src": "1124:20:0"
+                }
+              ]
+            },
+            "functionSelector": "05a8d569",
+            "id": 97,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getHouseBalance",
+            "nameLocation": "1065:15:0",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 90,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1080:2:0"
+            },
+            "returnParameters": {
+              "id": 93,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 92,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 97,
+                  "src": "1104:7:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 91,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1104:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1103:9:0"
+            },
+            "scope": 106,
+            "src": "1056:96:0",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 76,
+              "id": 104,
               "nodeType": "Block",
-              "src": "948:40:0",
+              "src": "1218:40:0",
               "statements": [
                 {
                   "expression": {
-                    "id": 74,
+                    "id": 102,
                     "name": "player_balance",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
                     "referencedDeclaration": 5,
-                    "src": "966:14:0",
+                    "src": "1236:14:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 73,
-                  "id": 75,
+                  "functionReturnParameters": 101,
+                  "id": 103,
                   "nodeType": "Return",
-                  "src": "959:21:0"
+                  "src": "1229:21:0"
                 }
               ]
             },
             "functionSelector": "0b01517c",
-            "id": 77,
+            "id": 105,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getPlayerBalance",
-            "nameLocation": "899:16:0",
+            "nameLocation": "1169:16:0",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 70,
+              "id": 98,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "915:2:0"
+              "src": "1185:2:0"
             },
             "returnParameters": {
-              "id": 73,
+              "id": 101,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 72,
+                  "id": 100,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 77,
-                  "src": "939:7:0",
+                  "scope": 105,
+                  "src": "1209:7:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2466,10 +2792,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 71,
+                    "id": 99,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "939:7:0",
+                    "src": "1209:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2478,20 +2804,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "938:9:0"
+              "src": "1208:9:0"
             },
-            "scope": 78,
-            "src": "890:98:0",
+            "scope": 106,
+            "src": "1160:98:0",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 79,
-        "src": "201:792:0"
+        "scope": 107,
+        "src": "201:1062:0"
       }
     ],
-    "src": "174:819:0"
+    "src": "174:1089:0"
   },
   "compiler": {
     "name": "solc",
@@ -2499,7 +2825,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-06-18T14:34:23.250Z",
+  "updatedAt": "2024-06-19T07:22:38.645Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
