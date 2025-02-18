@@ -5,7 +5,7 @@ Play Blackjack against the house alongside AI-powered bots using advanced decisi
 
 📌 Overview
 
-Casino Royale is a decentralized Blackjack experience where players compete against the house alongside AI-driven bots. The project combines smart contracts, machine learning-based decision-making, and blockchain technology to create a next-generation casino experience.
+Casino Royale is a decentralized Blackjack experience where players compete against the house alongside AI-driven bots. The project combines smart contracts, machine learning-based decision-making, and blockchain technology to create a next-generation casino experience. <br>
 
 
 🔥 Key Features
