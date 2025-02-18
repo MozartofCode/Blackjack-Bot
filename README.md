@@ -2,9 +2,11 @@
 
 Play Blackjack against the house alongside AI-powered bots using advanced decision-making algorithms. This decentralized application (DApp) integrates blockchain-based monetary transactions and AI-driven strategy optimization.
 
+
 📌 Overview
 
 Casino Royale is a decentralized Blackjack experience where players compete against the house alongside AI-driven bots. The project combines smart contracts, machine learning-based decision-making, and blockchain technology to create a next-generation casino experience.
+
 
 🔥 Key Features
 
@@ -57,46 +59,52 @@ Casino Royale follows a structured set of rules inspired by traditional Blackjac
 
 
 
+
 🛠️ Installation & Setup
+
 
 **Backend (Solidity + Smart Contracts) Setup**
 
 1. Clone the repository:
    
 git clone https://github.com/MozartofCode/Blackjack-Bot.git
+
 cd Casino-Royale
 
-4. Install dependencies:
+2. Install dependencies:
    
 npm install -g truffle
 
 npm install
 
-6. Start a local blockchain:
+3. Start a local blockchain:
    
 ganache-cli
 
 
-8. Deploy the smart contracts:
+4. Deploy the smart contracts:
    
 truffle migrate --reset
 
 
+
 **Frontend (React.js) Setup**
+
 
 1. Navigate to the frontend directory:
    
 cd client
 
 
-3. Install dependencies:
+2. Install dependencies:
    
 npm install
 
 
-5. Run the frontend:
+3. Run the frontend:
    
 npm start
+
 
 
 **Bots & AI Analysis**
@@ -104,6 +112,7 @@ npm start
 python bot_analysis.py
 
 This script runs AI-powered bots against the house and evaluates profitability based on a 30% profit threshold.
+
 
 📊 AI Bot Analysis
 
@@ -136,6 +145,7 @@ Each bot's win rate and profit percentage are analyzed over thousands of games t
 🏆 Project Inspiration
 
 This project was inspired by the movie "21", where a team of MIT students successfully applied card counting strategies to Blackjack. The initial bot was built in Java and later evolved into an AI-powered system with advanced ML models.
+
 
 🤝 Contributing
 
